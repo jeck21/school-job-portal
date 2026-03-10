@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Next.js + Supabase project with schema, deployment, and UI shell
 - [x] **Phase 2: First Source Pipeline** - PAREAP scraper, normalizer, and scheduled ingestion with failure handling (completed 2026-03-10)
-- [ ] **Phase 3: Job Browsing Core** - Browsable job list and detail pages with click-through to original postings
+- [x] **Phase 3: Job Browsing Core** - Browsable job list and detail pages with click-through to original postings (completed 2026-03-10)
 - [ ] **Phase 4: Search & Filters** - Keyword search, radius, school type, grade band, subject, salary, cert, and combined filters
 - [ ] **Phase 5: Additional Sources** - PAeducator.net, PDE/Teach in PA, and 2+ more adapters with deduplication
 - [ ] **Phase 6: Data Enrichment** - Salary extraction, certification parsing, freshness validation, and auto-removal
@@ -171,7 +171,7 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | 2026-03-10 |
 | 2. First Source Pipeline | 2/2 | Complete   | 2026-03-10 |
-| 3. Job Browsing Core | 0/2 | Not started | - |
+| 3. Job Browsing Core | 2/2 | Complete   | 2026-03-10 |
 | 4. Search & Filters | 0/3 | Not started | - |
 | 5. Additional Sources | 0/3 | Not started | - |
 | 6. Data Enrichment | 0/2 | Not started | - |

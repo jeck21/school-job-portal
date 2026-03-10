@@ -15,8 +15,8 @@
 - [ ] **SRCH-06**: User can filter jobs by subject/position category (Math, Science, SpEd, Admin, etc.)
 - [ ] **SRCH-07**: User can filter jobs by "Salary Info Included" toggle to show only postings that mention salary
 - [ ] **SRCH-08**: User can filter jobs by PA certification type required
-- [ ] **SRCH-09**: User can view a job detail page with title, school, location, salary, description excerpt, and source info
-- [ ] **SRCH-10**: User can click through to the original posting to apply
+- [x] **SRCH-09**: User can view a job detail page with title, school, location, salary, description excerpt, and source info
+- [x] **SRCH-10**: User can click through to the original posting to apply
 - [x] **SRCH-11**: User can see when a job was first posted and when it was last verified
 - [ ] **SRCH-12**: User can combine multiple filters simultaneously
 
@@ -108,8 +108,8 @@
 | SRCH-06 | Phase 4: Search & Filters | Pending |
 | SRCH-07 | Phase 4: Search & Filters | Pending |
 | SRCH-08 | Phase 4: Search & Filters | Pending |
-| SRCH-09 | Phase 3: Job Browsing Core | Pending |
-| SRCH-10 | Phase 3: Job Browsing Core | Pending |
+| SRCH-09 | Phase 3: Job Browsing Core | Complete |
+| SRCH-10 | Phase 3: Job Browsing Core | Complete |
 | SRCH-11 | Phase 3: Job Browsing Core | Complete |
 | SRCH-12 | Phase 4: Search & Filters | Pending |
 | DATA-01 | Phase 2: First Source Pipeline | Complete |
