@@ -44,7 +44,7 @@ export function JobList({
       </p>
 
       {/* Job rows */}
-      <div className="rounded-lg border border-border/50">
+      <div className="rounded-lg border border-border/50 [&>a:nth-child(even)]:bg-muted/30">
         {jobs.map((job) => (
           <JobRow key={job.id} job={job} />
         ))}

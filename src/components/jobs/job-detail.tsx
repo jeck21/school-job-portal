@@ -123,7 +123,7 @@ export function JobDetail({
         rel="noopener noreferrer"
         className="inline-flex h-10 items-center gap-2 rounded-lg bg-cta px-6 text-sm font-medium text-cta-foreground transition-colors hover:bg-cta/90"
       >
-        Apply at {districtName}
+        View Original Posting
         <ExternalLink className="size-4" />
       </a>
 
