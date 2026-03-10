@@ -20,5 +20,14 @@ export async function getJobs(offset: number = 0, limit: number = 25) {
     .range(offset, offset + limit - 1);
 
   if (error) throw error;
-  return { jobs: data ?? [], count: count ?? 0 };
+
+  // Normalize schools from Supabase array join to single object
+  const jobs = (data ?? []).map((job) => ({
+    ...job,
+    schools: Array.isArray(job.schools)
+      ? (job.schools[0] as { name: string; district_name: string | null } | undefined) ?? null
+      : job.schools,
+  }));
+
+  return { jobs, count: count ?? 0 };
 }

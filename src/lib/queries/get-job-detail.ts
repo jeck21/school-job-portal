@@ -19,5 +19,11 @@ export async function getJobDetail(id: string) {
     .single();
 
   if (error) throw error;
-  return data;
+
+  // Normalize schools from Supabase array join to single object
+  const schools = Array.isArray(data.schools)
+    ? (data.schools[0] as { name: string; district_name: string | null } | undefined) ?? null
+    : data.schools;
+
+  return { ...data, schools };
 }
