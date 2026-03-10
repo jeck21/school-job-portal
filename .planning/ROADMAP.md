@@ -47,11 +47,11 @@ Plans:
   2. The ingestion pipeline runs on a daily schedule without manual intervention
   3. A failed scrape leaves existing valid job data untouched (no data loss or corruption)
   4. Each scrape run produces a log showing jobs added, updated, and skipped
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md — Scraper infrastructure, PAREAP adapter, HTML parser, normalizer, school matcher, and unit tests
+- [ ] 02-02-PLAN.md — Ingestion pipeline wiring, CLI entrypoint, GitHub Actions scheduling, and end-to-end verification
 
 ### Phase 3: Job Browsing Core
 **Goal**: Educators can browse all ingested jobs and view details without any filters
