@@ -7,7 +7,7 @@
 
 ### Job Search & Browsing
 
-- [ ] **SRCH-01**: User can browse all aggregated PA educator job listings in a searchable list/grid
+- [x] **SRCH-01**: User can browse all aggregated PA educator job listings in a searchable list/grid
 - [ ] **SRCH-02**: User can search jobs by keyword (title, school name, description)
 - [ ] **SRCH-03**: User can filter jobs by distance radius from a location (zip code or browser geolocation)
 - [ ] **SRCH-04**: User can filter jobs by school type (public, private, charter, IU, PATTAN, PDE)
@@ -17,7 +17,7 @@
 - [ ] **SRCH-08**: User can filter jobs by PA certification type required
 - [ ] **SRCH-09**: User can view a job detail page with title, school, location, salary, description excerpt, and source info
 - [ ] **SRCH-10**: User can click through to the original posting to apply
-- [ ] **SRCH-11**: User can see when a job was first posted and when it was last verified
+- [x] **SRCH-11**: User can see when a job was first posted and when it was last verified
 - [ ] **SRCH-12**: User can combine multiple filters simultaneously
 
 ### Data Ingestion & Quality
@@ -100,7 +100,7 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SRCH-01 | Phase 3: Job Browsing Core | Pending |
+| SRCH-01 | Phase 3: Job Browsing Core | Complete |
 | SRCH-02 | Phase 4: Search & Filters | Pending |
 | SRCH-03 | Phase 4: Search & Filters | Pending |
 | SRCH-04 | Phase 4: Search & Filters | Pending |
@@ -110,7 +110,7 @@
 | SRCH-08 | Phase 4: Search & Filters | Pending |
 | SRCH-09 | Phase 3: Job Browsing Core | Pending |
 | SRCH-10 | Phase 3: Job Browsing Core | Pending |
-| SRCH-11 | Phase 3: Job Browsing Core | Pending |
+| SRCH-11 | Phase 3: Job Browsing Core | Complete |
 | SRCH-12 | Phase 4: Search & Filters | Pending |
 | DATA-01 | Phase 2: First Source Pipeline | Complete |
 | DATA-02 | Phase 5: Additional Sources | Pending |

@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 status: completed
 stopped_at: Phase 3 context gathered
-last_updated: "2026-03-10T21:56:23.990Z"
+last_updated: "2026-03-10T22:16:30.190Z"
 last_activity: 2026-03-10 -- Executed plan 02-02 (PAREAP ingestion pipeline + scheduling)
 progress:
   total_phases: 9
   completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 6
+  completed_plans: 5
   percent: 22
 ---
 
@@ -21,22 +21,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** Educators can find every relevant PA job opening in one place with filters that actually work -- without stale postings or clunky interfaces.
-**Current focus:** Phase 2 complete, ready for Phase 3
+**Current focus:** Phase 3 - Job Browsing Core
 
 ## Current Position
 
-Phase: 2 of 9 (First Source Pipeline) -- COMPLETE
-Plan: 2 of 2 in current phase (all done)
-Status: Phase 2 Complete
-Last activity: 2026-03-10 -- Executed plan 02-02 (PAREAP ingestion pipeline + scheduling)
+Phase: 3 of 9 (Job Browsing Core)
+Plan: 1 of 2 in current phase (03-01 complete)
+Status: Executing Phase 3
+Last activity: 2026-03-10 -- Executed plan 03-01 (data layer and UI dependencies)
 
-Progress: [##........] 22%
+Progress: [████████░░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: ~17 min
+- Total plans completed: 5
+- Average duration: ~13 min
 - Total execution time: ~1.1 hours
 
 **By Phase:**
@@ -45,9 +45,10 @@ Progress: [##........] 22%
 |-------|-------|-------|----------|
 | 1-Foundation | 2/2 | ~51 min | ~26 min |
 | 2-First Source Pipeline | 2/2 | ~14 min | ~7 min |
+| 3-Job Browsing Core | 1/2 | ~2 min | ~2 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6 min), 01-02 (~45 min), 02-01 (6 min), 02-02 (8 min)
+- Last 5 plans: 01-02 (~45 min), 02-01 (6 min), 02-02 (8 min), 03-01 (2 min)
 - Trend: Accelerating
 
 ## Accumulated Context
@@ -72,6 +73,9 @@ Recent decisions affecting current work:
 - [02-02]: Inline source seeding in ingestPareap (no separate migration)
 - [02-02]: Daily cron at 6 AM UTC (off-peak for PAREAP servers)
 - [02-02]: Batch size of 25 for ingestion upserts (finer partial-failure granularity)
+- [03-01]: Query pattern: server-side queries in src/lib/queries/ with "use server"
+- [03-01]: Left join for schools since school_id is nullable on jobs
+- [03-01]: CHECK constraint for report reason enum (simpler than Postgres ENUM)
 
 ### Pending Todos
 
@@ -84,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T21:56:23.988Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-job-browsing-core/03-CONTEXT.md
+Last session: 2026-03-10T22:16:00Z
+Stopped at: Completed 03-01-PLAN.md
+Resume file: .planning/phases/03-job-browsing-core/03-01-SUMMARY.md
