@@ -65,8 +65,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Data layer: query functions, date formatting, report flags migration, shadcn UI components
-- [ ] 03-02-PLAN.md — Job list page, detail modal with intercepting routes, load more, apply CTA, report button
+- [x] 03-01-PLAN.md — Data layer: query functions, date formatting, report flags migration, shadcn UI components
+- [x] 03-02-PLAN.md — Job list page, detail modal with intercepting routes, load more, apply CTA, report button
 
 ### Phase 4: Search & Filters
 **Goal**: Educators can narrow jobs using keyword search and all filter types, individually or combined
@@ -78,12 +78,11 @@ Plans:
   3. User can filter by school type, grade band, subject/position category, salary range, and certification type
   4. User can combine multiple filters simultaneously and the result set reflects all active filters
   5. The filter panel is visible and usable alongside the results list
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
-- [ ] 04-03: TBD
+- [ ] 04-01-PLAN.md — Database layer: geocoding migrations, search_jobs RPC function, filter options, server action
+- [ ] 04-02-PLAN.md — Filter UI: search bar, filter dropdowns, radius slider, toggles, URL state, job list wiring
 
 ### Phase 5: Additional Sources
 **Goal**: The portal aggregates jobs from 4+ PA sources with duplicates eliminated
@@ -172,7 +171,7 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 1. Foundation | 2/2 | Complete | 2026-03-10 |
 | 2. First Source Pipeline | 2/2 | Complete   | 2026-03-10 |
 | 3. Job Browsing Core | 2/2 | Complete   | 2026-03-10 |
-| 4. Search & Filters | 0/3 | Not started | - |
+| 4. Search & Filters | 0/2 | Not started | - |
 | 5. Additional Sources | 0/3 | Not started | - |
 | 6. Data Enrichment | 0/2 | Not started | - |
 | 7. District Accounts | 0/2 | Not started | - |
