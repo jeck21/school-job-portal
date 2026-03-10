@@ -62,11 +62,11 @@ Plans:
   2. User can click a job to see its detail page with title, school, location, salary, description, and source info
   3. User can click through from the detail page to the original posting to apply
   4. Each job displays when it was first posted and when it was last verified
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md — Data layer: query functions, date formatting, report flags migration, shadcn UI components
+- [ ] 03-02-PLAN.md — Job list page, detail modal with intercepting routes, load more, apply CTA, report button
 
 ### Phase 4: Search & Filters
 **Goal**: Educators can narrow jobs using keyword search and all filter types, individually or combined
