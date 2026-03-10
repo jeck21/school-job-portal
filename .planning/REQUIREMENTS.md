@@ -31,7 +31,7 @@
 - [ ] **DATA-07**: System deduplicates jobs that appear across multiple sources
 - [ ] **DATA-08**: System detects whether a posting mentions salary info (boolean flag, not extraction)
 - [ ] **DATA-09**: System extracts certification requirements from posting text when available
-- [ ] **DATA-10**: System runs ingestion on a scheduled basis (at least daily)
+- [x] **DATA-10**: System runs ingestion on a scheduled basis (at least daily)
 - [ ] **DATA-11**: System validates job freshness via URL health checks and AI content analysis
 - [ ] **DATA-12**: System auto-removes jobs with dead URLs or that are no longer accepting applications
 - [x] **DATA-13**: Failed scrapes do not corrupt or remove existing valid job data
@@ -121,7 +121,7 @@
 | DATA-07 | Phase 5: Additional Sources | Pending |
 | DATA-08 | Phase 6: Data Enrichment | Pending |
 | DATA-09 | Phase 6: Data Enrichment | Pending |
-| DATA-10 | Phase 2: First Source Pipeline | Pending |
+| DATA-10 | Phase 2: First Source Pipeline | Complete |
 | DATA-11 | Phase 6: Data Enrichment | Pending |
 | DATA-12 | Phase 6: Data Enrichment | Pending |
 | DATA-13 | Phase 2: First Source Pipeline | Complete |

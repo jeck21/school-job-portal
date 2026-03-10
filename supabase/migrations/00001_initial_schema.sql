@@ -4,6 +4,9 @@
 -- Enable PostGIS for future radius search (Phase 4)
 CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA extensions;
 
+-- Make PostGIS types available without schema prefix in this session
+SET search_path TO public, extensions;
+
 -- Sources: where jobs come from (PAREAP, PAeducator.net, PDE, etc.)
 CREATE TABLE sources (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

@@ -3,7 +3,9 @@
  * Usage: npx tsx scripts/scrapers/run.ts <adapter-name>
  * Example: npx tsx scripts/scrapers/run.ts pareap
  */
-import "dotenv/config";
+import { config } from "dotenv";
+config({ path: ".env.local" });
+config(); // also load .env as fallback
 import { ingestPareap } from "./adapters/pareap/ingest";
 
 const ADAPTERS: Record<string, () => Promise<unknown>> = {

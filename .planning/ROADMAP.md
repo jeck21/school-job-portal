@@ -13,7 +13,7 @@ This roadmap delivers a PA educator job aggregation portal from zero to launch-r
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Next.js + Supabase project with schema, deployment, and UI shell
-- [ ] **Phase 2: First Source Pipeline** - PAREAP scraper, normalizer, and scheduled ingestion with failure handling
+- [x] **Phase 2: First Source Pipeline** - PAREAP scraper, normalizer, and scheduled ingestion with failure handling (completed 2026-03-10)
 - [ ] **Phase 3: Job Browsing Core** - Browsable job list and detail pages with click-through to original postings
 - [ ] **Phase 4: Search & Filters** - Keyword search, radius, school type, grade band, subject, salary, cert, and combined filters
 - [ ] **Phase 5: Additional Sources** - PAeducator.net, PDE/Teach in PA, and 2+ more adapters with deduplication
@@ -50,8 +50,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Scraper infrastructure, PAREAP adapter, HTML parser, normalizer, school matcher, and unit tests
-- [ ] 02-02-PLAN.md — Ingestion pipeline wiring, CLI entrypoint, GitHub Actions scheduling, and end-to-end verification
+- [x] 02-01-PLAN.md — Scraper infrastructure, PAREAP adapter, HTML parser, normalizer, school matcher, and unit tests
+- [x] 02-02-PLAN.md — Ingestion pipeline wiring, CLI entrypoint, GitHub Actions scheduling, and end-to-end verification
 
 ### Phase 3: Job Browsing Core
 **Goal**: Educators can browse all ingested jobs and view details without any filters
@@ -170,7 +170,7 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | 2026-03-10 |
-| 2. First Source Pipeline | 0/2 | Not started | - |
+| 2. First Source Pipeline | 2/2 | Complete   | 2026-03-10 |
 | 3. Job Browsing Core | 0/2 | Not started | - |
 | 4. Search & Filters | 0/3 | Not started | - |
 | 5. Additional Sources | 0/3 | Not started | - |
