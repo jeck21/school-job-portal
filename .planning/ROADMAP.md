@@ -12,7 +12,7 @@ This roadmap delivers a PA educator job aggregation portal from zero to launch-r
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Next.js + Supabase project with schema, deployment, and UI shell
+- [x] **Phase 1: Foundation** - Next.js + Supabase project with schema, deployment, and UI shell
 - [ ] **Phase 2: First Source Pipeline** - PAREAP scraper, normalizer, and scheduled ingestion with failure handling
 - [ ] **Phase 3: Job Browsing Core** - Browsable job list and detail pages with click-through to original postings
 - [ ] **Phase 4: Search & Filters** - Keyword search, radius, school type, grade band, subject, salary, cert, and combined filters
@@ -35,8 +35,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Project scaffolding, database schema, theme system, and test infrastructure
-- [ ] 01-02-PLAN.md — UI shell with landing page, navigation, page routes, and visual verification
+- [x] 01-01-PLAN.md — Project scaffolding, database schema, theme system, and test infrastructure
+- [x] 01-02-PLAN.md — UI shell with landing page, navigation, page routes, and visual verification
 
 ### Phase 2: First Source Pipeline
 **Goal**: Jobs from PAREAP flow automatically into the database on a schedule without corrupting existing data
@@ -169,7 +169,7 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Planning complete | - |
+| 1. Foundation | 2/2 | Complete | 2026-03-10 |
 | 2. First Source Pipeline | 0/2 | Not started | - |
 | 3. Job Browsing Core | 0/2 | Not started | - |
 | 4. Search & Filters | 0/3 | Not started | - |
