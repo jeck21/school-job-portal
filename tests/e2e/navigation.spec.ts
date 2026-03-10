@@ -1,27 +1,48 @@
 import { test, expect } from "@playwright/test";
 
-// TODO: Enable once navigation and page routes are built (Plan 01-02)
 test.describe("Navigation", () => {
-  test.skip("navigates to Jobs page", async ({ page }) => {
+  test("navigates to Jobs page via nav link", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("link", { name: "Jobs" }).click();
+    // Use the first visible nav (desktop at 1280px)
+    await page.locator("header nav").first().getByRole("link", { name: "Jobs" }).click();
     await expect(page).toHaveURL("/jobs");
+    await expect(
+      page.getByRole("heading", { name: "Job Listings" })
+    ).toBeVisible();
   });
 
-  test.skip("navigates to About page", async ({ page }) => {
+  test("navigates to About page and shows Coming Soon", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("link", { name: "About" }).click();
+    await page
+      .locator("header nav")
+      .first()
+      .getByRole("link", { name: "About" })
+      .click();
     await expect(page).toHaveURL("/about");
+    await expect(page.getByRole("heading", { name: "About" })).toBeVisible();
+    await expect(page.getByText("coming soon", { exact: false })).toBeVisible();
   });
 
-  test.skip("navigates to For Schools page", async ({ page }) => {
+  test("navigates to For Schools page and shows Coming Soon", async ({
+    page,
+  }) => {
     await page.goto("/");
-    await page.getByRole("link", { name: "For Schools" }).click();
+    await page
+      .locator("header nav")
+      .first()
+      .getByRole("link", { name: "For Schools" })
+      .click();
     await expect(page).toHaveURL("/for-schools");
+    await expect(
+      page.getByRole("heading", { name: /For Schools/i })
+    ).toBeVisible();
+    await expect(page.getByText("Coming soon", { exact: false })).toBeVisible();
   });
 
-  test.skip("shows Coming Soon on unbuilt pages", async ({ page }) => {
-    await page.goto("/about");
-    await expect(page.getByText("Coming Soon")).toBeVisible();
+  test("Browse Jobs CTA navigates to /jobs", async ({ page }) => {
+    await page.goto("/");
+    // Click the hero Browse Jobs link (inside main content)
+    await page.locator("main section").first().getByRole("link", { name: "Browse Jobs" }).click();
+    await expect(page).toHaveURL("/jobs");
   });
 });
