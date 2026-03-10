@@ -49,7 +49,6 @@ export function JobDetail({
   job: JobDetailData;
   asModal?: boolean;
 }) {
-  const districtName = job.schools?.district_name ?? "District";
   const location = job.city
     ? `${job.city}, ${job.state}`
     : job.location_raw ?? job.state;
