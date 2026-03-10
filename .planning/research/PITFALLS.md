@@ -62,22 +62,19 @@ The same job appears on PAREAP, PAeducator, the district website, AND Frontline.
 
 **Phase:** Data normalization (critical — build before going multi-source)
 
-### 4. Salary Data is Messy or Missing
-**Severity: Medium | Likelihood: Very High**
+### 4. Salary Data — Keep It Simple
+**Severity: Low | Likelihood: Very High**
 
-Most education job postings don't include salary, or express it inconsistently: "$45,000-$65,000", "Per district salary schedule", "Step 1: $42,500", "Competitive".
+Most education job postings don't include salary, or express it inconsistently ("$45,000-$65,000", "Per district salary schedule", "Competitive"). Attempting to parse and normalize salary values is not worth the complexity — the data is too imprecise.
 
 **Warning signs:**
-- Salary filter returns very few results
-- Salary values are wildly inconsistent (mixing hourly/annual)
-- Users report incorrect salary information
+- Over-engineering salary extraction when a simple boolean suffices
 
 **Prevention:**
-- Allow "Not listed" as a valid salary state — don't force extraction
-- Normalize salary type (annual, hourly, daily)
-- Parse salary ranges when present, store min/max
-- Use PA public salary schedules as supplementary data source
-- Filter UI should handle "Include jobs without salary listed" toggle
+- Store a boolean `has_salary_info` flag — does the posting mention salary at all?
+- Filter UI: "Salary Info Included" toggle to show only jobs that mention salary
+- Do NOT attempt to extract, normalize, or display salary amounts
+- Users click through to the original posting to see actual salary details
 
 **Phase:** Data normalization and search/filter
 

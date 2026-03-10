@@ -13,7 +13,7 @@
 - [ ] **SRCH-04**: User can filter jobs by school type (public, private, charter, IU, PATTAN, PDE)
 - [ ] **SRCH-05**: User can filter jobs by grade band (PreK, Elementary, Middle, High)
 - [ ] **SRCH-06**: User can filter jobs by subject/position category (Math, Science, SpEd, Admin, etc.)
-- [ ] **SRCH-07**: User can filter jobs by salary range with a toggle to include jobs without listed salary
+- [ ] **SRCH-07**: User can filter jobs by "Salary Info Included" toggle to show only postings that mention salary
 - [ ] **SRCH-08**: User can filter jobs by PA certification type required
 - [ ] **SRCH-09**: User can view a job detail page with title, school, location, salary, description excerpt, and source info
 - [ ] **SRCH-10**: User can click through to the original posting to apply
@@ -29,7 +29,7 @@
 - [ ] **DATA-05**: System normalizes job data across sources (titles, locations, school names, school types)
 - [ ] **DATA-06**: System geocodes school/job locations for radius search
 - [ ] **DATA-07**: System deduplicates jobs that appear across multiple sources
-- [ ] **DATA-08**: System extracts salary information from posting text when available
+- [ ] **DATA-08**: System detects whether a posting mentions salary info (boolean flag, not extraction)
 - [ ] **DATA-09**: System extracts certification requirements from posting text when available
 - [ ] **DATA-10**: System runs ingestion on a scheduled basis (at least daily)
 - [ ] **DATA-11**: System validates job freshness via URL health checks and AI content analysis
@@ -100,13 +100,53 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| *(populated during roadmap creation)* | | |
+| SRCH-01 | Phase 3: Job Browsing Core | Pending |
+| SRCH-02 | Phase 4: Search & Filters | Pending |
+| SRCH-03 | Phase 4: Search & Filters | Pending |
+| SRCH-04 | Phase 4: Search & Filters | Pending |
+| SRCH-05 | Phase 4: Search & Filters | Pending |
+| SRCH-06 | Phase 4: Search & Filters | Pending |
+| SRCH-07 | Phase 4: Search & Filters | Pending |
+| SRCH-08 | Phase 4: Search & Filters | Pending |
+| SRCH-09 | Phase 3: Job Browsing Core | Pending |
+| SRCH-10 | Phase 3: Job Browsing Core | Pending |
+| SRCH-11 | Phase 3: Job Browsing Core | Pending |
+| SRCH-12 | Phase 4: Search & Filters | Pending |
+| DATA-01 | Phase 2: First Source Pipeline | Pending |
+| DATA-02 | Phase 5: Additional Sources | Pending |
+| DATA-03 | Phase 5: Additional Sources | Pending |
+| DATA-04 | Phase 5: Additional Sources | Pending |
+| DATA-05 | Phase 2: First Source Pipeline | Pending |
+| DATA-06 | Phase 4: Search & Filters | Pending |
+| DATA-07 | Phase 5: Additional Sources | Pending |
+| DATA-08 | Phase 6: Data Enrichment | Pending |
+| DATA-09 | Phase 6: Data Enrichment | Pending |
+| DATA-10 | Phase 2: First Source Pipeline | Pending |
+| DATA-11 | Phase 6: Data Enrichment | Pending |
+| DATA-12 | Phase 6: Data Enrichment | Pending |
+| DATA-13 | Phase 2: First Source Pipeline | Pending |
+| DIST-01 | Phase 7: District Accounts | Pending |
+| DIST-02 | Phase 7: District Accounts | Pending |
+| DIST-03 | Phase 7: District Accounts | Pending |
+| DIST-04 | Phase 7: District Accounts | Pending |
+| DIST-05 | Phase 7: District Accounts | Pending |
+| DIST-06 | Phase 7: District Accounts | Pending |
+| UI-01 | Phase 1: Foundation | Pending |
+| UI-02 | Phase 8: UI Polish & Static Pages | Pending |
+| UI-03 | Phase 9: Operations & Launch | Pending |
+| UI-04 | Phase 8: UI Polish & Static Pages | Pending |
+| UI-05 | Phase 8: UI Polish & Static Pages | Pending |
+| UI-06 | Phase 8: UI Polish & Static Pages | Pending |
+| INFRA-01 | Phase 1: Foundation | Pending |
+| INFRA-02 | Phase 9: Operations & Launch | Pending |
+| INFRA-03 | Phase 9: Operations & Launch | Pending |
+| INFRA-04 | Phase 9: Operations & Launch | Pending |
 
 **Coverage:**
-- v1 requirements: 31 total
-- Mapped to phases: 0
-- Unmapped: 31 ⚠️
+- v1 requirements: 41 total
+- Mapped to phases: 41
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-10*
-*Last updated: 2026-03-10 after initial definition*
+*Last updated: 2026-03-10 after roadmap creation*
