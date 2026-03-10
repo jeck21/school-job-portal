@@ -32,11 +32,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. The portal is publicly accessible at a URL and renders a branded landing page
   2. The database schema exists with tables for jobs, sources, schools, and districts
   3. The UI shell has a header, navigation, and placeholder content area with professional styling
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md — Project scaffolding, database schema, theme system, and test infrastructure
+- [ ] 01-02-PLAN.md — UI shell with landing page, navigation, page routes, and visual verification
 
 ### Phase 2: First Source Pipeline
 **Goal**: Jobs from PAREAP flow automatically into the database on a schedule without corrupting existing data
@@ -169,7 +169,7 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Not started | - |
+| 1. Foundation | 0/2 | Planning complete | - |
 | 2. First Source Pipeline | 0/2 | Not started | - |
 | 3. Job Browsing Core | 0/2 | Not started | - |
 | 4. Search & Filters | 0/3 | Not started | - |
