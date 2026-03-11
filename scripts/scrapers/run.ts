@@ -7,9 +7,11 @@ import { config } from "dotenv";
 config({ path: ".env.local" });
 config(); // also load .env as fallback
 import { ingestPareap } from "./adapters/pareap/ingest";
+import { ingestPaeducator } from "./adapters/paeducator/ingest";
 
 const ADAPTERS: Record<string, () => Promise<unknown>> = {
   pareap: ingestPareap,
+  paeducator: ingestPaeducator,
 };
 
 async function main() {
