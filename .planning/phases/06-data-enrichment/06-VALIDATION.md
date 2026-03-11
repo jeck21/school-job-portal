@@ -38,10 +38,10 @@ created: 2026-03-11
 
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| 06-01-01 | 01 | 1 | DATA-08 | unit | `npx vitest run tests/enrichment/salary-detector.test.ts` | ❌ W0 | ⬜ pending |
-| 06-01-02 | 01 | 1 | DATA-09 | unit | `npx vitest run tests/enrichment/cert-extractor.test.ts` | ❌ W0 | ⬜ pending |
-| 06-02-01 | 02 | 2 | DATA-11 | unit | `npx vitest run tests/freshness/heuristics.test.ts` | ❌ W0 | ⬜ pending |
-| 06-02-02 | 02 | 2 | DATA-12 | integration | `npx vitest run tests/freshness/check-freshness.test.ts` | ❌ W0 | ⬜ pending |
+| 06-01-01 | 01 | 1 | DATA-08 | unit | `npx vitest run tests/scrapers/salary-detector.test.ts` | ❌ W0 | ⬜ pending |
+| 06-01-02 | 01 | 1 | DATA-09 | unit | `npx vitest run tests/scrapers/cert-extractor.test.ts` | ❌ W0 | ⬜ pending |
+| 06-02-01 | 02 | 1 | DATA-11 | unit | `npx vitest run tests/scrapers/heuristics.test.ts` | ❌ W0 | ⬜ pending |
+| 06-02-02 | 02 | 1 | DATA-12 | integration | `npx vitest run tests/scrapers/check-freshness.test.ts` | ❌ W0 | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -49,10 +49,10 @@ created: 2026-03-11
 
 ## Wave 0 Requirements
 
-- [ ] `tests/enrichment/salary-detector.test.ts` — stubs for DATA-08
-- [ ] `tests/enrichment/cert-extractor.test.ts` — stubs for DATA-09
-- [ ] `tests/freshness/heuristics.test.ts` — stubs for DATA-11
-- [ ] `tests/freshness/check-freshness.test.ts` — stubs for DATA-12
+- [ ] `tests/scrapers/salary-detector.test.ts` — stubs for DATA-08
+- [ ] `tests/scrapers/cert-extractor.test.ts` — stubs for DATA-09
+- [ ] `tests/scrapers/heuristics.test.ts` — stubs for DATA-11
+- [ ] `tests/scrapers/check-freshness.test.ts` — stubs for DATA-12
 
 ---
 
