@@ -96,7 +96,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Shared ingestion pipeline, dedup module, and PAeducator.net API adapter
+- [x] 05-01-PLAN.md — Shared ingestion pipeline, dedup module, and PAeducator.net API adapter
 - [ ] 05-02-PLAN.md — SchoolSpring and TeachingJobsInPA cheerio adapters
 - [ ] 05-03-PLAN.md — Unified GitHub Actions workflow, PAREAP refactor, and end-to-end wiring
 
@@ -172,7 +172,7 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 2. First Source Pipeline | 2/2 | Complete   | 2026-03-10 |
 | 3. Job Browsing Core | 2/2 | Complete   | 2026-03-10 |
 | 4. Search & Filters | 2/2 | Complete   | 2026-03-11 |
-| 5. Additional Sources | 0/3 | Not started | - |
+| 5. Additional Sources | 1/3 | In Progress | - |
 | 6. Data Enrichment | 0/2 | Not started | - |
 | 7. District Accounts | 0/2 | Not started | - |
 | 8. UI Polish & Static Pages | 0/2 | Not started | - |

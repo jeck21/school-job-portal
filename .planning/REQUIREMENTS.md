@@ -23,12 +23,12 @@
 ### Data Ingestion & Quality
 
 - [x] **DATA-01**: System aggregates jobs from PAREAP
-- [ ] **DATA-02**: System aggregates jobs from PAeducator.net
+- [x] **DATA-02**: System aggregates jobs from PAeducator.net
 - [ ] **DATA-03**: System aggregates jobs from PDE / Teach in PA
 - [ ] **DATA-04**: System aggregates jobs from at least 2 additional PA sources (PAIU, Frontline/Applitrack, TeachingJobsInPA, or district sites)
 - [x] **DATA-05**: System normalizes job data across sources (titles, locations, school names, school types)
 - [x] **DATA-06**: System geocodes school/job locations for radius search
-- [ ] **DATA-07**: System deduplicates jobs that appear across multiple sources
+- [x] **DATA-07**: System deduplicates jobs that appear across multiple sources
 - [ ] **DATA-08**: System detects whether a posting mentions salary info (boolean flag, not extraction)
 - [ ] **DATA-09**: System extracts certification requirements from posting text when available
 - [x] **DATA-10**: System runs ingestion on a scheduled basis (at least daily)
@@ -113,12 +113,12 @@
 | SRCH-11 | Phase 3: Job Browsing Core | Complete |
 | SRCH-12 | Phase 4: Search & Filters | Complete |
 | DATA-01 | Phase 2: First Source Pipeline | Complete |
-| DATA-02 | Phase 5: Additional Sources | Pending |
+| DATA-02 | Phase 5: Additional Sources | Complete |
 | DATA-03 | Phase 5: Additional Sources | Pending |
 | DATA-04 | Phase 5: Additional Sources | Pending |
 | DATA-05 | Phase 2: First Source Pipeline | Complete |
 | DATA-06 | Phase 4: Search & Filters | Complete |
-| DATA-07 | Phase 5: Additional Sources | Pending |
+| DATA-07 | Phase 5: Additional Sources | Complete |
 | DATA-08 | Phase 6: Data Enrichment | Pending |
 | DATA-09 | Phase 6: Data Enrichment | Pending |
 | DATA-10 | Phase 2: First Source Pipeline | Complete |

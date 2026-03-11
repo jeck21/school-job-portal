@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 5 context gathered
-last_updated: "2026-03-11T17:18:26.843Z"
-last_activity: 2026-03-11 -- Executed plan 04-02 (filter UI & URL state)
+status: in_progress
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-03-11T17:42:41Z"
+last_activity: 2026-03-11 -- Executed plan 05-01 (PAeducator adapter + dedup)
 progress:
   total_phases: 9
   completed_phases: 4
-  total_plans: 8
-  completed_plans: 8
-  percent: 89
+  total_plans: 11
+  completed_plans: 9
+  percent: 82
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** Educators can find every relevant PA job opening in one place with filters that actually work -- without stale postings or clunky interfaces.
-**Current focus:** Phase 4 - Search & Filters
+**Current focus:** Phase 5 - Additional Sources
 
 ## Current Position
 
-Phase: 4 of 9 (Search & Filters) -- COMPLETE
-Plan: 2 of 2 in current phase (04-02 complete)
-Status: Phase Complete
-Last activity: 2026-03-11 -- Executed plan 04-02 (filter UI & URL state)
+Phase: 5 of 9 (Additional Sources) -- IN PROGRESS
+Plan: 1 of 3 in current phase (05-01 complete)
+Status: In Progress
+Last activity: 2026-03-11 -- Executed plan 05-01 (PAeducator adapter + dedup)
 
-Progress: [█████████░] 89%
+Progress: [████████░░] 82%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: ~12 min
-- Total execution time: ~1.4 hours
+- Total plans completed: 9
+- Average duration: ~11 min
+- Total execution time: ~1.5 hours
 
 **By Phase:**
 
@@ -47,9 +47,10 @@ Progress: [█████████░] 89%
 | 2-First Source Pipeline | 2/2 | ~14 min | ~7 min |
 | 3-Job Browsing Core | 2/2 | ~17 min | ~9 min |
 | 4-Search & Filters | 2/2 | ~14 min | ~7 min |
+| 5-Additional Sources | 1/3 | ~4 min | ~4 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (8 min), 03-01 (2 min), 03-02 (15 min), 04-01 (9 min), 04-02 (5 min)
+- Last 5 plans: 03-01 (2 min), 03-02 (15 min), 04-01 (9 min), 04-02 (5 min), 05-01 (4 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -86,6 +87,10 @@ Recent decisions affecting current work:
 - [04-02]: nuqs for URL-synced filter state (shallow routing, no full page re-renders)
 - [04-02]: Base UI popover trigger pattern (no asChild) for shadcn v5 compatibility
 - [04-02]: Flat RPC results mapped to nested JobRow shape at consumption boundary
+- [05-01]: Native fetch for PAeducator API (fetchWithRetry returns string, API needs JSON)
+- [05-01]: Dedup weighted Dice: title 0.6 + school 0.4, match at 0.8, borderline 0.7-0.85
+- [05-01]: Shared runIngestion pipeline replaces per-source boilerplate
+- [05-01]: PAeducator 1.5s polite delay between job detail requests
 
 ### Pending Todos
 
@@ -93,11 +98,11 @@ None yet.
 
 ### Blockers/Concerns
 
-- No PA job source has a public API; all require scraping with ToS/legal considerations
+- PAeducator.net has a REST API (contrary to earlier "no public APIs" assumption) -- discovered during research
 - Scraper fragility is a known risk; monitoring needed from early phases
 
 ## Session Continuity
 
-Last session: 2026-03-11T17:18:26.840Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-additional-sources/05-CONTEXT.md
+Last session: 2026-03-11T17:42:41Z
+Stopped at: Completed 05-01-PLAN.md
+Resume file: .planning/phases/05-additional-sources/05-01-SUMMARY.md
