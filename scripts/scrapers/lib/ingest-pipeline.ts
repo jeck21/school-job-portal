@@ -14,6 +14,8 @@ import {
   DEDUP_REVIEW_LOW,
   DEDUP_REVIEW_HIGH,
 } from "./job-dedup";
+import { detectSalary } from "./enrichment/salary-detector";
+import { extractCertifications } from "./enrichment/cert-extractor";
 
 const BATCH_SIZE = 25;
 
@@ -126,7 +128,7 @@ async function processBatch(
         if (job.description) {
           const { data: existingJob } = await supabase
             .from("jobs")
-            .select("description")
+            .select("description, salary_mentioned, certifications")
             .eq("id", dupResult.jobId)
             .single();
 
@@ -135,17 +137,61 @@ async function processBatch(
             (!existingJob.description ||
               job.description.length > (existingJob.description?.length ?? 0))
           ) {
+            // Enrich the longer description with salary/cert data
+            const salaryResult = detectSalary(job.description);
+            const enrichedCerts =
+              job.certificates && job.certificates.length > 0
+                ? job.certificates
+                : extractCertifications(job.description);
+
             await supabase
               .from("jobs")
               .update({
                 description: job.description,
+                salary_mentioned: salaryResult.mentioned,
+                salary_raw: salaryResult.raw,
+                certifications:
+                  enrichedCerts.length > 0 ? enrichedCerts : null,
                 last_verified_at: new Date().toISOString(),
               })
               .eq("id", dupResult.jobId);
+          } else if (
+            existingJob &&
+            (!existingJob.salary_mentioned ||
+              !existingJob.certifications ||
+              existingJob.certifications.length === 0)
+          ) {
+            // Even without a longer description, enrich if missing salary/cert data
+            const updates: Record<string, unknown> = {};
+            if (!existingJob.salary_mentioned) {
+              const salaryResult = detectSalary(job.description);
+              if (salaryResult.mentioned) {
+                updates.salary_mentioned = salaryResult.mentioned;
+                updates.salary_raw = salaryResult.raw;
+              }
+            }
+            if (
+              !existingJob.certifications ||
+              existingJob.certifications.length === 0
+            ) {
+              const certs =
+                job.certificates && job.certificates.length > 0
+                  ? job.certificates
+                  : extractCertifications(job.description);
+              if (certs.length > 0) {
+                updates.certifications = certs;
+              }
+            }
+            if (Object.keys(updates).length > 0) {
+              await supabase
+                .from("jobs")
+                .update(updates)
+                .eq("id", dupResult.jobId);
+            }
           }
         }
 
-        // Upsert job_sources for cross-source attribution
+        // Upsert job_sources for cross-source attribution (with dedup score for audit)
         const { error: jsError } = await supabase
           .from("job_sources")
           .upsert(
@@ -154,6 +200,7 @@ async function processBatch(
               source_id: sourceId,
               external_id: job.externalId,
               external_url: job.url,
+              dedup_score: Math.round(dupResult.score * 100) / 100,
               last_verified_at: new Date().toISOString(),
             },
             { onConflict: "job_id,source_id" }
@@ -190,6 +237,15 @@ async function processBatch(
         job.schoolType
       );
 
+      // Enrichment: salary detection
+      const salaryResult = detectSalary(job.description);
+
+      // Enrichment: cert extraction (adapter certs take priority per user decision)
+      const enrichedCerts =
+        job.certificates && job.certificates.length > 0
+          ? job.certificates
+          : extractCertifications(job.description);
+
       // Build job record for upsert
       const jobRecord = {
         source_id: sourceId,
@@ -204,7 +260,9 @@ async function processBatch(
         zip_code: job.zipCode || null,
         school_type: job.schoolType || null,
         subject_area: job.subjectArea ? [job.subjectArea] : null,
-        certifications: job.certificates || null,
+        certifications: enrichedCerts.length > 0 ? enrichedCerts : null,
+        salary_mentioned: salaryResult.mentioned,
+        salary_raw: salaryResult.raw,
         is_active: true,
         last_verified_at: new Date().toISOString(),
       };
