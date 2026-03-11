@@ -1,18 +1,31 @@
-name: Scrape PAREAP Jobs
+name: Scrape Job Sources
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Daily at 6 AM UTC (1-2 AM Eastern)
-  workflow_dispatch: {}    # Manual trigger from GitHub UI
+    - cron: '0 6 * * *'   # PAREAP - 6 AM UTC (1-2 AM Eastern)
+    - cron: '0 10 * * *'  # PAeducator - 10 AM UTC
+    - cron: '0 14 * * *'  # SchoolSpring - 2 PM UTC
+    - cron: '0 18 * * *'  # TeachingJobsInPA - 6 PM UTC
+  workflow_dispatch:
+    inputs:
+      adapter:
+        description: 'Adapter to run'
+        required: true
+        type: choice
+        options:
+          - pareap
+          - paeducator
+          - schoolspring
+          - teachingjobsinpa
+          - all
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     env:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-      NODE_TLS_REJECT_UNAUTHORIZED: '0'  # PAREAP has SSL cert issues
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,4 +33,39 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci
-      - run: npm run scrape:pareap
+
+      - name: Determine adapter
+        id: adapter
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "name=${{ github.event.inputs.adapter }}" >> "$GITHUB_OUTPUT"
+          else
+            # Map cron schedule to adapter name
+            case "${{ github.event.schedule }}" in
+              "0 6 * * *")   echo "name=pareap" >> "$GITHUB_OUTPUT" ;;
+              "0 10 * * *")  echo "name=paeducator" >> "$GITHUB_OUTPUT" ;;
+              "0 14 * * *")  echo "name=schoolspring" >> "$GITHUB_OUTPUT" ;;
+              "0 18 * * *")  echo "name=teachingjobsinpa" >> "$GITHUB_OUTPUT" ;;
+              *)             echo "name=all" >> "$GITHUB_OUTPUT" ;;
+            esac
+          fi
+
+      - name: Run adapter
+        run: |
+          ADAPTER="${{ steps.adapter.outputs.name }}"
+
+          if [ "$ADAPTER" = "all" ]; then
+            # Run each adapter; PAREAP needs NODE_TLS_REJECT_UNAUTHORIZED=0
+            echo "--- Running all adapters ---"
+            NODE_TLS_REJECT_UNAUTHORIZED=0 npx tsx scripts/scrapers/run.ts pareap
+            sleep 30
+            npx tsx scripts/scrapers/run.ts paeducator
+            sleep 30
+            npx tsx scripts/scrapers/run.ts schoolspring
+            sleep 30
+            npx tsx scripts/scrapers/run.ts teachingjobsinpa
+          elif [ "$ADAPTER" = "pareap" ]; then
+            NODE_TLS_REJECT_UNAUTHORIZED=0 npx tsx scripts/scrapers/run.ts pareap
+          else
+            npx tsx scripts/scrapers/run.ts "$ADAPTER"
+          fi

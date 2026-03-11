@@ -11,6 +11,7 @@
     "scrape:paeducator": "npx tsx scripts/scrapers/run.ts paeducator",
     "scrape:schoolspring": "npx tsx scripts/scrapers/run.ts schoolspring",
     "scrape:teachingjobsinpa": "npx tsx scripts/scrapers/run.ts teachingjobsinpa",
+    "scrape:all": "npx tsx scripts/scrapers/run.ts all",
     "seed:zips": "npx tsx scripts/seed-zip-coordinates.ts"
   },
   "dependencies": {
