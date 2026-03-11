@@ -1,0 +1,26 @@
+{
+  "id": 12345,
+  "jobTitle": "Elementary Teacher - 3rd Grade",
+  "county": "Delaware",
+  "employmentType": "Full-Time",
+  "description": "<p>We are seeking a passionate and dedicated <strong>3rd Grade Elementary Teacher</strong> to join our team. The ideal candidate will have experience with differentiated instruction and a commitment to student success.</p><ul><li>Plan and implement engaging lessons</li><li>Collaborate with grade-level team</li><li>Maintain positive classroom environment</li></ul>",
+  "postedDttm": "2026-03-01T00:00:00",
+  "applicationDeadlineDate": "2026-04-15T00:00:00",
+  "organization": {
+    "name": "Springfield School District",
+    "city": "Springfield",
+    "zip": "19064",
+    "url": "https://www.springfieldsd.org/employment",
+    "intermediateUnit_Id": "IU25"
+  },
+  "certifications": [
+    {
+      "name": "Elementary K-6",
+      "certificationType": "Instructional"
+    },
+    {
+      "name": "General Science K-8",
+      "certificationType": "Instructional"
+    }
+  ]
+}
