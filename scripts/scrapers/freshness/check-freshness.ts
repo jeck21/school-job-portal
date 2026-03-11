@@ -290,13 +290,13 @@ export async function runFreshnessCheck(): Promise<void> {
 
   // Upsert the "freshness-checker" source for logging
   const { data: sourceData, error: sourceError } = await supabase
-    .from("job_sources")
+    .from("sources")
     .upsert(
       {
         slug: "freshness-checker",
         name: "Freshness Checker",
         base_url: "internal",
-        scrape_type: "utility",
+        scraper_type: "utility",
       },
       { onConflict: "slug" }
     )
