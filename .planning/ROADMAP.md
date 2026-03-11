@@ -93,12 +93,12 @@ Plans:
   2. Jobs from PDE / Teach in PA appear in the portal
   3. Jobs from at least 2 additional sources (PAIU, Frontline/Applitrack, TeachingJobsInPA, or district sites) appear in the portal
   4. The same job posted on multiple sources appears only once, with source attribution showing all origins
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
-- [ ] 05-03: TBD
+- [ ] 05-01-PLAN.md — Shared ingestion pipeline, dedup module, and PAeducator.net API adapter
+- [ ] 05-02-PLAN.md — SchoolSpring and TeachingJobsInPA cheerio adapters
+- [ ] 05-03-PLAN.md — Unified GitHub Actions workflow, PAREAP refactor, and end-to-end wiring
 
 ### Phase 6: Data Enrichment
 **Goal**: Jobs are flagged for salary/cert presence, and stale or dead postings are automatically removed
@@ -109,7 +109,7 @@ Plans:
   2. Jobs with certification requirements mentioned in the posting text have those requirements extracted and available for filtering
   3. The system periodically checks job URLs and posting content, flagging or removing jobs that are expired or have dead links
   4. An AI-based content analysis identifies postings that are no longer accepting applications
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
 - [ ] 06-01: TBD
@@ -124,7 +124,7 @@ Plans:
   2. A district can claim existing scraped listings and those listings display a "Verified" badge
   3. A district can update details on their claimed listings and mark them as filled/closed
   4. A district has a profile page showing all their open positions
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
 - [ ] 07-01: TBD
@@ -139,7 +139,7 @@ Plans:
   2. The filter panel works intuitively on both desktop and mobile layouts
   3. An About page explains the portal's mission and value
   4. A career coaching request form sends an email to the operator when submitted
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
 - [ ] 08-01: TBD
@@ -154,7 +154,7 @@ Plans:
   2. The scraping pipeline runs reliably on schedule without manual intervention in a production environment
   3. Basic analytics track page views, search queries, and filter usage
   4. Search results load in under 2 seconds on typical connections
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
 - [ ] 09-01: TBD
