@@ -171,7 +171,7 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 1. Foundation | 2/2 | Complete | 2026-03-10 |
 | 2. First Source Pipeline | 2/2 | Complete   | 2026-03-10 |
 | 3. Job Browsing Core | 2/2 | Complete   | 2026-03-10 |
-| 4. Search & Filters | 0/2 | Not started | - |
+| 4. Search & Filters | 1/2 | In Progress|  |
 | 5. Additional Sources | 0/3 | Not started | - |
 | 6. Data Enrichment | 0/2 | Not started | - |
 | 7. District Accounts | 0/2 | Not started | - |

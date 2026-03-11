@@ -8,17 +8,17 @@
 ### Job Search & Browsing
 
 - [x] **SRCH-01**: User can browse all aggregated PA educator job listings in a searchable list/grid
-- [ ] **SRCH-02**: User can search jobs by keyword (title, school name, description)
-- [ ] **SRCH-03**: User can filter jobs by distance radius from a location (zip code or browser geolocation)
-- [ ] **SRCH-04**: User can filter jobs by school type (public, private, charter, IU, PATTAN, PDE)
-- [ ] **SRCH-05**: User can filter jobs by grade band (PreK, Elementary, Middle, High)
-- [ ] **SRCH-06**: User can filter jobs by subject/position category (Math, Science, SpEd, Admin, etc.)
-- [ ] **SRCH-07**: User can filter jobs by "Salary Info Included" toggle to show only postings that mention salary
-- [ ] **SRCH-08**: User can filter jobs by PA certification type required
+- [x] **SRCH-02**: User can search jobs by keyword (title, school name, description)
+- [x] **SRCH-03**: User can filter jobs by distance radius from a location (zip code or browser geolocation)
+- [x] **SRCH-04**: User can filter jobs by school type (public, private, charter, IU, PATTAN, PDE)
+- [x] **SRCH-05**: User can filter jobs by grade band (PreK, Elementary, Middle, High)
+- [x] **SRCH-06**: User can filter jobs by subject/position category (Math, Science, SpEd, Admin, etc.)
+- [x] **SRCH-07**: User can filter jobs by "Salary Info Included" toggle to show only postings that mention salary
+- [x] **SRCH-08**: User can filter jobs by PA certification type required
 - [x] **SRCH-09**: User can view a job detail page with title, school, location, salary, description excerpt, and source info
 - [x] **SRCH-10**: User can click through to the original posting to apply
 - [x] **SRCH-11**: User can see when a job was first posted and when it was last verified
-- [ ] **SRCH-12**: User can combine multiple filters simultaneously
+- [x] **SRCH-12**: User can combine multiple filters simultaneously
 
 ### Data Ingestion & Quality
 
@@ -27,7 +27,7 @@
 - [ ] **DATA-03**: System aggregates jobs from PDE / Teach in PA
 - [ ] **DATA-04**: System aggregates jobs from at least 2 additional PA sources (PAIU, Frontline/Applitrack, TeachingJobsInPA, or district sites)
 - [x] **DATA-05**: System normalizes job data across sources (titles, locations, school names, school types)
-- [ ] **DATA-06**: System geocodes school/job locations for radius search
+- [x] **DATA-06**: System geocodes school/job locations for radius search
 - [ ] **DATA-07**: System deduplicates jobs that appear across multiple sources
 - [ ] **DATA-08**: System detects whether a posting mentions salary info (boolean flag, not extraction)
 - [ ] **DATA-09**: System extracts certification requirements from posting text when available
@@ -101,23 +101,23 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | SRCH-01 | Phase 3: Job Browsing Core | Complete |
-| SRCH-02 | Phase 4: Search & Filters | Pending |
-| SRCH-03 | Phase 4: Search & Filters | Pending |
-| SRCH-04 | Phase 4: Search & Filters | Pending |
-| SRCH-05 | Phase 4: Search & Filters | Pending |
-| SRCH-06 | Phase 4: Search & Filters | Pending |
-| SRCH-07 | Phase 4: Search & Filters | Pending |
-| SRCH-08 | Phase 4: Search & Filters | Pending |
+| SRCH-02 | Phase 4: Search & Filters | Complete |
+| SRCH-03 | Phase 4: Search & Filters | Complete |
+| SRCH-04 | Phase 4: Search & Filters | Complete |
+| SRCH-05 | Phase 4: Search & Filters | Complete |
+| SRCH-06 | Phase 4: Search & Filters | Complete |
+| SRCH-07 | Phase 4: Search & Filters | Complete |
+| SRCH-08 | Phase 4: Search & Filters | Complete |
 | SRCH-09 | Phase 3: Job Browsing Core | Complete |
 | SRCH-10 | Phase 3: Job Browsing Core | Complete |
 | SRCH-11 | Phase 3: Job Browsing Core | Complete |
-| SRCH-12 | Phase 4: Search & Filters | Pending |
+| SRCH-12 | Phase 4: Search & Filters | Complete |
 | DATA-01 | Phase 2: First Source Pipeline | Complete |
 | DATA-02 | Phase 5: Additional Sources | Pending |
 | DATA-03 | Phase 5: Additional Sources | Pending |
 | DATA-04 | Phase 5: Additional Sources | Pending |
 | DATA-05 | Phase 2: First Source Pipeline | Complete |
-| DATA-06 | Phase 4: Search & Filters | Pending |
+| DATA-06 | Phase 4: Search & Filters | Complete |
 | DATA-07 | Phase 5: Additional Sources | Pending |
 | DATA-08 | Phase 6: Data Enrichment | Pending |
 | DATA-09 | Phase 6: Data Enrichment | Pending |

@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 4 context gathered
-last_updated: "2026-03-10T23:21:43.060Z"
-last_activity: 2026-03-10 -- Executed plan 03-02 (job browsing UI)
+status: in-progress
+stopped_at: Completed 04-01-PLAN.md
+last_updated: "2026-03-11T00:07:43.667Z"
+last_activity: 2026-03-10 -- Executed plan 04-01 (search backend)
 progress:
   total_phases: 9
   completed_phases: 3
-  total_plans: 6
-  completed_plans: 6
-  percent: 100
+  total_plans: 8
+  completed_plans: 7
+  percent: 88
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** Educators can find every relevant PA job opening in one place with filters that actually work -- without stale postings or clunky interfaces.
-**Current focus:** Phase 3 - Job Browsing Core
+**Current focus:** Phase 4 - Search & Filters
 
 ## Current Position
 
-Phase: 3 of 9 (Job Browsing Core) -- COMPLETE
-Plan: 2 of 2 in current phase (03-02 complete)
-Status: Phase 3 Complete
-Last activity: 2026-03-10 -- Executed plan 03-02 (job browsing UI)
+Phase: 4 of 9 (Search & Filters)
+Plan: 1 of 2 in current phase (04-01 complete)
+Status: In Progress
+Last activity: 2026-03-10 -- Executed plan 04-01 (search backend)
 
-Progress: [██████████] 100%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: ~12 min
-- Total execution time: ~1.25 hours
+- Total execution time: ~1.4 hours
 
 **By Phase:**
 
@@ -46,9 +46,10 @@ Progress: [██████████] 100%
 | 1-Foundation | 2/2 | ~51 min | ~26 min |
 | 2-First Source Pipeline | 2/2 | ~14 min | ~7 min |
 | 3-Job Browsing Core | 2/2 | ~17 min | ~9 min |
+| 4-Search & Filters | 1/2 | ~9 min | ~9 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (6 min), 02-02 (8 min), 03-01 (2 min), 03-02 (15 min)
+- Last 5 plans: 02-02 (8 min), 03-01 (2 min), 03-02 (15 min), 04-01 (9 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -79,6 +80,9 @@ Recent decisions affecting current work:
 - [03-02]: Parallel route modal pattern (@modal slot + intercepting routes) for detail overlays
 - [03-02]: "View Original Posting" label since scraped URLs point to PAREAP, not school sites
 - [03-02]: Alternating row colors for visual scanability in job list
+- [04-01]: Single RPC function for all search/filter logic (one round trip, PostGIS support)
+- [04-01]: Static zip CSV for geocoding (zero runtime cost, no API key)
+- [04-01]: include_remote flag for cyber schools to bypass radius filter
 
 ### Pending Todos
 
@@ -91,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T23:21:43.058Z
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-search-filters/04-CONTEXT.md
+Last session: 2026-03-11T00:07:00.000Z
+Stopped at: Completed 04-01-PLAN.md
+Resume file: .planning/phases/04-search-filters/04-01-SUMMARY.md
