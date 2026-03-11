@@ -109,11 +109,11 @@ Plans:
   2. Jobs with certification requirements mentioned in the posting text have those requirements extracted and available for filtering
   3. The system periodically checks job URLs and posting content, flagging or removing jobs that are expired or have dead links
   4. An AI-based content analysis identifies postings that are no longer accepting applications
-**Plans**: 3 plans
+**Plans**: 2 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
+- [ ] 06-01-PLAN.md — Salary detection and certification extraction pure functions with pipeline integration
+- [ ] 06-02-PLAN.md — Freshness validation with URL health checks, heuristics, AI fallback, and weekly cron
 
 ### Phase 7: District Accounts
 **Goal**: School districts can create accounts, claim their listings, and manage their postings with verified status
