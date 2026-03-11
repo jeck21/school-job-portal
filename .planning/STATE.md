@@ -48,10 +48,10 @@ Progress: [██████████] 100%
 | 3-Job Browsing Core | 2/2 | ~17 min | ~9 min |
 | 4-Search & Filters | 2/2 | ~14 min | ~7 min |
 | 5-Additional Sources | 3/3 | ~8 min | ~3 min |
-| 6-Data Enrichment | 1/2 | ~3 min | ~3 min |
+| 6-Data Enrichment | 2/2 | ~6 min | ~3 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-02 (5 min), 05-01 (4 min), 05-02 (3 min), 05-03 (1 min), 06-01 (3 min)
+- Last 5 plans: 05-01 (4 min), 05-02 (3 min), 05-03 (1 min), 06-01 (3 min), 06-02 (3 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -100,6 +100,10 @@ Recent decisions affecting current work:
 - [05-03]: Staggered cron: 6AM PAREAP, 10AM PAeducator, 2PM SchoolSpring, 6PM TeachingJobsInPA (UTC)
 - [06-01]: Removed short aliases (PE, ASL, etc.) from cert taxonomy -- matched via longer alias forms only
 - [06-01]: Dedup branch also enriches existing jobs when description updated or salary/cert data missing
+- [06-02]: Sequential job processing with domain-based polite delays (1.5s) to avoid rate limiting
+- [06-02]: Ambiguous jobs without AI confirmation kept active (conservative soft-delete approach)
+- [06-02]: AI client instantiated per-call to avoid module-level errors when API key missing
+- [06-02]: PAREAP TLS override scoped per-request with cleanup in finally block
 
 ### Pending Todos
 
@@ -112,6 +116,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T20:07:00Z
-Stopped at: Completed 06-01-PLAN.md
-Resume file: .planning/phases/06-data-enrichment/06-01-SUMMARY.md
+Last session: 2026-03-11T20:07:48Z
+Stopped at: Completed 06-02-PLAN.md
+Resume file: .planning/phases/06-data-enrichment/06-02-SUMMARY.md

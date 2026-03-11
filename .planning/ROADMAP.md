@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Job Browsing Core** - Browsable job list and detail pages with click-through to original postings (completed 2026-03-10)
 - [x] **Phase 4: Search & Filters** - Keyword search, radius, school type, grade band, subject, salary, cert, and combined filters (completed 2026-03-11)
 - [x] **Phase 5: Additional Sources** - PAeducator.net, PDE/Teach in PA, and 2+ more adapters with deduplication (completed 2026-03-11)
-- [ ] **Phase 6: Data Enrichment** - Salary extraction, certification parsing, freshness validation, and auto-removal
+- [x] **Phase 6: Data Enrichment** - Salary extraction, certification parsing, freshness validation, and auto-removal (completed 2026-03-11)
 - [ ] **Phase 7: District Accounts** - District auth, listing claims, verified badges, updates, and profile pages
 - [ ] **Phase 8: UI Polish & Static Pages** - Responsive mobile experience, about page, career coaching form, and visual polish
 - [ ] **Phase 9: Operations & Launch** - Scrape monitoring, analytics, performance optimization, and production readiness
@@ -112,8 +112,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Salary detection and certification extraction pure functions with pipeline integration
-- [ ] 06-02-PLAN.md — Freshness validation with URL health checks, heuristics, AI fallback, and weekly cron
+- [x] 06-01-PLAN.md — Salary detection and certification extraction pure functions with pipeline integration
+- [x] 06-02-PLAN.md — Freshness validation with URL health checks, heuristics, AI fallback, and weekly cron
 
 ### Phase 7: District Accounts
 **Goal**: School districts can create accounts, claim their listings, and manage their postings with verified status
@@ -173,7 +173,7 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 3. Job Browsing Core | 2/2 | Complete   | 2026-03-10 |
 | 4. Search & Filters | 2/2 | Complete   | 2026-03-11 |
 | 5. Additional Sources | 3/3 | Complete   | 2026-03-11 |
-| 6. Data Enrichment | 0/2 | Not started | - |
+| 6. Data Enrichment | 2/2 | Complete | 2026-03-11 |
 | 7. District Accounts | 0/2 | Not started | - |
 | 8. UI Polish & Static Pages | 0/2 | Not started | - |
 | 9. Operations & Launch | 0/2 | Not started | - |

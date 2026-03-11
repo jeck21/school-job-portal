@@ -32,8 +32,8 @@
 - [x] **DATA-08**: System detects whether a posting mentions salary info (boolean flag, not extraction)
 - [x] **DATA-09**: System extracts certification requirements from posting text when available
 - [x] **DATA-10**: System runs ingestion on a scheduled basis (at least daily)
-- [ ] **DATA-11**: System validates job freshness via URL health checks and AI content analysis
-- [ ] **DATA-12**: System auto-removes jobs with dead URLs or that are no longer accepting applications
+- [x] **DATA-11**: System validates job freshness via URL health checks and AI content analysis
+- [x] **DATA-12**: System auto-removes jobs with dead URLs or that are no longer accepting applications
 - [x] **DATA-13**: Failed scrapes do not corrupt or remove existing valid job data
 
 ### School/District Accounts
@@ -122,8 +122,8 @@
 | DATA-08 | Phase 6: Data Enrichment | Complete |
 | DATA-09 | Phase 6: Data Enrichment | Complete |
 | DATA-10 | Phase 2: First Source Pipeline | Complete |
-| DATA-11 | Phase 6: Data Enrichment | Pending |
-| DATA-12 | Phase 6: Data Enrichment | Pending |
+| DATA-11 | Phase 6: Data Enrichment | Complete |
+| DATA-12 | Phase 6: Data Enrichment | Complete |
 | DATA-13 | Phase 2: First Source Pipeline | Complete |
 | DIST-01 | Phase 7: District Accounts | Pending |
 | DIST-02 | Phase 7: District Accounts | Pending |
