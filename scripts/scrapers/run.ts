@@ -8,10 +8,14 @@ config({ path: ".env.local" });
 config(); // also load .env as fallback
 import { ingestPareap } from "./adapters/pareap/ingest";
 import { ingestPaeducator } from "./adapters/paeducator/ingest";
+import { ingestSchoolSpring } from "./adapters/schoolspring/ingest";
+import { ingestTeachingJobsInPA } from "./adapters/teachingjobsinpa/ingest";
 
 const ADAPTERS: Record<string, () => Promise<unknown>> = {
   pareap: ingestPareap,
   paeducator: ingestPaeducator,
+  schoolspring: ingestSchoolSpring,
+  teachingjobsinpa: ingestTeachingJobsInPA,
 };
 
 async function main() {

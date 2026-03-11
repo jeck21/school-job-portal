@@ -10,6 +10,7 @@
     "scrape:pareap": "NODE_TLS_REJECT_UNAUTHORIZED=0 npx tsx scripts/scrapers/run.ts pareap",
     "scrape:paeducator": "npx tsx scripts/scrapers/run.ts paeducator",
     "scrape:schoolspring": "npx tsx scripts/scrapers/run.ts schoolspring",
+    "scrape:teachingjobsinpa": "npx tsx scripts/scrapers/run.ts teachingjobsinpa",
     "seed:zips": "npx tsx scripts/seed-zip-coordinates.ts"
   },
   "dependencies": {
