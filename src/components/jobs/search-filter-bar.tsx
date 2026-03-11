@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { FilterDropdown } from "@/components/jobs/filter-dropdown";
 import { RadiusFilter } from "@/components/jobs/radius-filter";
 import { ActiveFilters } from "@/components/jobs/active-filters";
-import { useJobFilters, getDefaultFilters } from "@/lib/hooks/use-job-filters";
+import { useJobFilters } from "@/lib/hooks/use-job-filters";
 import {
   SCHOOL_TYPES,
   GRADE_BANDS,
@@ -38,7 +38,6 @@ export function SearchFilterBar() {
     filters.unspecified !== true;
 
   function clearAll() {
-    const defaults = getDefaultFilters();
     setFilters({
       q: null,
       type: null,
