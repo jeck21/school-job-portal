@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-03-11T00:07:43.667Z"
-last_activity: 2026-03-10 -- Executed plan 04-01 (search backend)
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-11T00:15:00.000Z"
+last_activity: 2026-03-11 -- Executed plan 04-02 (filter UI & URL state)
 progress:
   total_phases: 9
   completed_phases: 3
   total_plans: 8
-  completed_plans: 7
-  percent: 88
+  completed_plans: 8
+  percent: 89
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 
 ## Current Position
 
-Phase: 4 of 9 (Search & Filters)
-Plan: 1 of 2 in current phase (04-01 complete)
-Status: In Progress
-Last activity: 2026-03-10 -- Executed plan 04-01 (search backend)
+Phase: 4 of 9 (Search & Filters) -- COMPLETE
+Plan: 2 of 2 in current phase (04-02 complete)
+Status: Phase Complete
+Last activity: 2026-03-11 -- Executed plan 04-02 (filter UI & URL state)
 
-Progress: [█████████░] 88%
+Progress: [█████████░] 89%
 
 ## Performance Metrics
 
@@ -46,10 +46,10 @@ Progress: [█████████░] 88%
 | 1-Foundation | 2/2 | ~51 min | ~26 min |
 | 2-First Source Pipeline | 2/2 | ~14 min | ~7 min |
 | 3-Job Browsing Core | 2/2 | ~17 min | ~9 min |
-| 4-Search & Filters | 1/2 | ~9 min | ~9 min |
+| 4-Search & Filters | 2/2 | ~14 min | ~7 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (8 min), 03-01 (2 min), 03-02 (15 min), 04-01 (9 min)
+- Last 5 plans: 02-02 (8 min), 03-01 (2 min), 03-02 (15 min), 04-01 (9 min), 04-02 (5 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -83,6 +83,9 @@ Recent decisions affecting current work:
 - [04-01]: Single RPC function for all search/filter logic (one round trip, PostGIS support)
 - [04-01]: Static zip CSV for geocoding (zero runtime cost, no API key)
 - [04-01]: include_remote flag for cyber schools to bypass radius filter
+- [04-02]: nuqs for URL-synced filter state (shallow routing, no full page re-renders)
+- [04-02]: Base UI popover trigger pattern (no asChild) for shadcn v5 compatibility
+- [04-02]: Flat RPC results mapped to nested JobRow shape at consumption boundary
 
 ### Pending Todos
 
@@ -95,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T00:07:00.000Z
-Stopped at: Completed 04-01-PLAN.md
-Resume file: .planning/phases/04-search-filters/04-01-SUMMARY.md
+Last session: 2026-03-11T00:15:00.000Z
+Stopped at: Completed 04-02-PLAN.md (Phase 4 complete)
+Resume file: .planning/phases/04-search-filters/04-02-SUMMARY.md
