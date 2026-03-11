@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 6 context gathered
-last_updated: "2026-03-11T19:39:16.521Z"
-last_activity: 2026-03-11 -- Executed plan 05-03 (Unified workflow + PAREAP refactor)
+stopped_at: Completed 06-02-PLAN.md
+last_updated: "2026-03-11T20:07:48.564Z"
+last_activity: 2026-03-11 -- Executed plan 06-02 (Freshness validation system)
 progress:
   total_phases: 9
-  completed_phases: 5
-  total_plans: 11
-  completed_plans: 11
-  percent: 88
+  completed_phases: 6
+  total_plans: 13
+  completed_plans: 13
+  percent: 100
 ---
 
 # Project State
@@ -21,22 +21,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** Educators can find every relevant PA job opening in one place with filters that actually work -- without stale postings or clunky interfaces.
-**Current focus:** Phase 5 - Additional Sources
+**Current focus:** Phase 6 - Data Enrichment
 
 ## Current Position
 
-Phase: 5 of 9 (Additional Sources) -- COMPLETE
-Plan: 3 of 3 in current phase (05-03 complete)
+Phase: 6 of 9 (Data Enrichment) -- COMPLETE
+Plan: 2 of 2 in current phase (06-02 complete)
 Status: Phase Complete
-Last activity: 2026-03-11 -- Executed plan 05-03 (Unified workflow + PAREAP refactor)
+Last activity: 2026-03-11 -- Executed plan 06-02 (Freshness validation system)
 
-Progress: [█████████░] 88%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
-- Average duration: ~11 min
+- Total plans completed: 13
+- Average duration: ~10 min
 - Total execution time: ~1.5 hours
 
 **By Phase:**
@@ -48,9 +48,10 @@ Progress: [█████████░] 88%
 | 3-Job Browsing Core | 2/2 | ~17 min | ~9 min |
 | 4-Search & Filters | 2/2 | ~14 min | ~7 min |
 | 5-Additional Sources | 3/3 | ~8 min | ~3 min |
+| 6-Data Enrichment | 1/2 | ~3 min | ~3 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (9 min), 04-02 (5 min), 05-01 (4 min), 05-02 (3 min), 05-03 (1 min)
+- Last 5 plans: 04-02 (5 min), 05-01 (4 min), 05-02 (3 min), 05-03 (1 min), 06-01 (3 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -97,6 +98,8 @@ Recent decisions affecting current work:
 - [05-03]: NODE_TLS_REJECT_UNAUTHORIZED=0 scoped per-step to PAREAP only in unified workflow
 - [05-03]: Sequential "all" execution with 30s delays and error isolation between adapters
 - [05-03]: Staggered cron: 6AM PAREAP, 10AM PAeducator, 2PM SchoolSpring, 6PM TeachingJobsInPA (UTC)
+- [06-01]: Removed short aliases (PE, ASL, etc.) from cert taxonomy -- matched via longer alias forms only
+- [06-01]: Dedup branch also enriches existing jobs when description updated or salary/cert data missing
 
 ### Pending Todos
 
@@ -109,6 +112,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T19:39:16.518Z
-Stopped at: Phase 6 context gathered
-Resume file: .planning/phases/06-data-enrichment/06-CONTEXT.md
+Last session: 2026-03-11T20:07:00Z
+Stopped at: Completed 06-01-PLAN.md
+Resume file: .planning/phases/06-data-enrichment/06-01-SUMMARY.md

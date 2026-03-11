@@ -29,8 +29,8 @@
 - [x] **DATA-05**: System normalizes job data across sources (titles, locations, school names, school types)
 - [x] **DATA-06**: System geocodes school/job locations for radius search
 - [x] **DATA-07**: System deduplicates jobs that appear across multiple sources
-- [ ] **DATA-08**: System detects whether a posting mentions salary info (boolean flag, not extraction)
-- [ ] **DATA-09**: System extracts certification requirements from posting text when available
+- [x] **DATA-08**: System detects whether a posting mentions salary info (boolean flag, not extraction)
+- [x] **DATA-09**: System extracts certification requirements from posting text when available
 - [x] **DATA-10**: System runs ingestion on a scheduled basis (at least daily)
 - [ ] **DATA-11**: System validates job freshness via URL health checks and AI content analysis
 - [ ] **DATA-12**: System auto-removes jobs with dead URLs or that are no longer accepting applications
@@ -119,8 +119,8 @@
 | DATA-05 | Phase 2: First Source Pipeline | Complete |
 | DATA-06 | Phase 4: Search & Filters | Complete |
 | DATA-07 | Phase 5: Additional Sources | Complete |
-| DATA-08 | Phase 6: Data Enrichment | Pending |
-| DATA-09 | Phase 6: Data Enrichment | Pending |
+| DATA-08 | Phase 6: Data Enrichment | Complete |
+| DATA-09 | Phase 6: Data Enrichment | Complete |
 | DATA-10 | Phase 2: First Source Pipeline | Complete |
 | DATA-11 | Phase 6: Data Enrichment | Pending |
 | DATA-12 | Phase 6: Data Enrichment | Pending |
