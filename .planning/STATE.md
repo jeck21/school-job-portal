@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Completed 05-01-PLAN.md
-last_updated: "2026-03-11T17:42:41Z"
-last_activity: 2026-03-11 -- Executed plan 05-01 (PAeducator adapter + dedup)
+stopped_at: Completed 05-02-PLAN.md
+last_updated: "2026-03-11T17:49:00Z"
+last_activity: 2026-03-11 -- Executed plan 05-02 (SchoolSpring + TeachingJobsInPA adapters)
 progress:
   total_phases: 9
   completed_phases: 4
   total_plans: 11
-  completed_plans: 9
-  percent: 82
+  completed_plans: 10
+  percent: 85
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 ## Current Position
 
 Phase: 5 of 9 (Additional Sources) -- IN PROGRESS
-Plan: 1 of 3 in current phase (05-01 complete)
+Plan: 2 of 3 in current phase (05-02 complete)
 Status: In Progress
-Last activity: 2026-03-11 -- Executed plan 05-01 (PAeducator adapter + dedup)
+Last activity: 2026-03-11 -- Executed plan 05-02 (SchoolSpring + TeachingJobsInPA adapters)
 
-Progress: [████████░░] 82%
+Progress: [█████████░] 85%
 
 ## Performance Metrics
 
@@ -47,10 +47,10 @@ Progress: [████████░░] 82%
 | 2-First Source Pipeline | 2/2 | ~14 min | ~7 min |
 | 3-Job Browsing Core | 2/2 | ~17 min | ~9 min |
 | 4-Search & Filters | 2/2 | ~14 min | ~7 min |
-| 5-Additional Sources | 1/3 | ~4 min | ~4 min |
+| 5-Additional Sources | 2/3 | ~7 min | ~4 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (2 min), 03-02 (15 min), 04-01 (9 min), 04-02 (5 min), 05-01 (4 min)
+- Last 5 plans: 03-02 (15 min), 04-01 (9 min), 04-02 (5 min), 05-01 (4 min), 05-02 (3 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -91,6 +91,9 @@ Recent decisions affecting current work:
 - [05-01]: Dedup weighted Dice: title 0.6 + school 0.4, match at 0.8, borderline 0.7-0.85
 - [05-01]: Shared runIngestion pipeline replaces per-source boilerplate
 - [05-01]: PAeducator 1.5s polite delay between job detail requests
+- [05-02]: SchoolSpring POST pagination with pageNumber form data
+- [05-02]: TeachingJobsInPA slugified school+title for stable external IDs
+- [05-02]: TeachingJobsInPA apply URLs are employer direct links
 
 ### Pending Todos
 
@@ -103,6 +106,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T17:42:41Z
-Stopped at: Completed 05-01-PLAN.md
-Resume file: .planning/phases/05-additional-sources/05-01-SUMMARY.md
+Last session: 2026-03-11T17:49:00Z
+Stopped at: Completed 05-02-PLAN.md
+Resume file: .planning/phases/05-additional-sources/05-02-SUMMARY.md
