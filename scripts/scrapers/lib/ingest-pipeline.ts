@@ -21,6 +21,54 @@ import { normalizeSchoolName } from "./school-matcher";
 
 const BATCH_SIZE = 25;
 
+/** Aggregator domains whose URLs we want to replace with district websites */
+const AGGREGATOR_DOMAINS = ["pareap.net", "paeducator.net"];
+
+function isAggregatorUrl(url: string): boolean {
+  try {
+    const hostname = new URL(url).hostname.toLowerCase();
+    return AGGREGATOR_DOMAINS.some((d) => hostname.endsWith(d));
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Look up a better URL from the school's district website or the school's
+ * own website. Returns null if no better URL is available.
+ */
+async function findDistrictWebsite(
+  supabase: SupabaseClient,
+  schoolId: string | null
+): Promise<string | null> {
+  if (!schoolId) return null;
+
+  const { data: school } = await supabase
+    .from("schools")
+    .select("website, district_name")
+    .eq("id", schoolId)
+    .single();
+
+  if (!school) return null;
+
+  // Prefer school's own website
+  if (school.website?.trim()) return school.website.trim();
+
+  // Fall back to district website
+  if (school.district_name) {
+    const { data: district } = await supabase
+      .from("districts")
+      .select("website")
+      .ilike("name", school.district_name)
+      .limit(1)
+      .single();
+
+    if (district?.website?.trim()) return district.website.trim();
+  }
+
+  return null;
+}
+
 export interface SourceConfig {
   name: string;
   slug: string;
@@ -348,6 +396,16 @@ async function processBatch(
         );
       }
 
+      // If the scraped URL points to an aggregator, try to find the
+      // school/district website instead
+      let jobUrl = job.url;
+      if (isAggregatorUrl(jobUrl) && schoolId) {
+        const betterUrl = await findDistrictWebsite(supabase, schoolId);
+        if (betterUrl) {
+          jobUrl = betterUrl;
+        }
+      }
+
       // Build job record for upsert
       const jobRecord: Record<string, unknown> = {
         source_id: sourceId,
@@ -355,7 +413,7 @@ async function processBatch(
         school_id: schoolId,
         title: job.title,
         description: job.description || null,
-        url: job.url,
+        url: jobUrl,
         location_raw: job.locationRaw,
         city: job.city || null,
         state: job.state || "PA",
