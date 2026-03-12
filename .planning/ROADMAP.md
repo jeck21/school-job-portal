@@ -127,8 +127,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 07-01: TBD
-- [ ] 07-02: TBD
+- [ ] 07-01-PLAN.md — Database migration, auth middleware, signup/login/logout, email confirmation, domain validation
+- [ ] 07-02-PLAN.md — Dashboard with claim review, listing management (delist/relist/create/edit), verified badge, scraper suppression
+- [ ] 07-03-PLAN.md — Public district profiles, district directory, verified badge integration in job list/detail
 
 ### Phase 8: UI Polish & Static Pages
 **Goal**: The portal looks and works great on all devices and has all supporting pages
@@ -174,6 +175,6 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 4. Search & Filters | 2/2 | Complete   | 2026-03-11 |
 | 5. Additional Sources | 3/3 | Complete   | 2026-03-11 |
 | 6. Data Enrichment | 2/2 | Complete | 2026-03-11 |
-| 7. District Accounts | 0/2 | Not started | - |
+| 7. District Accounts | 0/3 | Not started | - |
 | 8. UI Polish & Static Pages | 0/2 | Not started | - |
 | 9. Operations & Launch | 0/2 | Not started | - |
