@@ -6,6 +6,7 @@ import { GraduationCap, Menu, X } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { buttonVariants } from "@/components/ui/button";
 import { Nav } from "@/components/layout/nav";
+import { AuthIndicator } from "@/components/layout/auth-indicator";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -27,8 +28,9 @@ export function Header() {
           <Nav />
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:flex">
+        {/* Desktop CTA + Auth */}
+        <div className="hidden items-center gap-3 md:flex">
+          <AuthIndicator />
           <Link href="/jobs" className={cn(buttonVariants({ size: "sm" }))}>
             Browse Jobs
           </Link>
@@ -53,6 +55,7 @@ export function Header() {
       >
         <div className="flex flex-col gap-2 px-4 py-4">
           <Nav onLinkClick={() => setMobileOpen(false)} />
+          <AuthIndicator />
           <Link
             href="/jobs"
             onClick={() => setMobileOpen(false)}

@@ -50,12 +50,12 @@ export function ListingCard({ job }: { job: DistrictJob }) {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setModalOpen(true)}
-        className="flex w-full items-center justify-between rounded-lg border border-border px-4 py-3 text-left transition-colors hover:bg-muted/50"
-      >
-        <div className="min-w-0 flex-1">
+      <div className="flex items-center justify-between rounded-lg border border-border px-4 py-3">
+        <button
+          type="button"
+          onClick={() => setModalOpen(true)}
+          className="min-w-0 flex-1 text-left transition-colors hover:opacity-80"
+        >
           <div className="flex items-center gap-2">
             <span className="truncate font-medium text-foreground">
               {job.title}
@@ -72,8 +72,43 @@ export function ListingCard({ job }: { job: DistrictJob }) {
             <span>&middot;</span>
             <span>Posted {formatRelativeDate(job.first_seen_at)}</span>
           </div>
+        </button>
+
+        <div className="flex items-center gap-2 pl-4">
+          {job.is_manual && !isDelisted && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setIsEditing(true);
+                setModalOpen(true);
+              }}
+            >
+              Edit
+            </Button>
+          )}
+
+          {isDelisted ? (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleRelist}
+              disabled={isPending}
+            >
+              {isPending ? "..." : "Re-list"}
+            </Button>
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleDelist}
+              disabled={isPending}
+            >
+              {isPending ? "..." : "Delist"}
+            </Button>
+          )}
         </div>
-      </button>
+      </div>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-2xl">
