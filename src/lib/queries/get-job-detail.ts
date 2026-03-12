@@ -1,9 +1,9 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export async function getJobDetail(id: string) {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
 
   const { data, error } = await supabase
     .from("jobs")
