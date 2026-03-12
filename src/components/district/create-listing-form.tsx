@@ -13,14 +13,17 @@ export function CreateListingForm() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(formData: FormData) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
     setSuccess(false);
     setError(null);
     startTransition(async () => {
       const result = await createManualJob(formData);
       if (result.success) {
         setSuccess(true);
-        // Reset form by clearing state after a moment
+        form.reset();
       } else {
         setError(result.error ?? "Failed to create listing");
       }
@@ -49,7 +52,7 @@ export function CreateListingForm() {
         </div>
       )}
 
-      <form action={handleSubmit} className="mt-6 space-y-5">
+      <form onSubmit={handleSubmit} className="mt-6 space-y-5">
         <div className="space-y-2">
           <Label htmlFor="title">Job Title *</Label>
           <Input
