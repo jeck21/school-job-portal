@@ -38,7 +38,7 @@
 
 ### School/District Accounts
 
-- [ ] **DIST-01**: District hiring team can create an account with email and password
+- [x] **DIST-01**: District hiring team can create an account with email and password
 - [ ] **DIST-02**: District can claim existing scraped listings as belonging to their school/district
 - [ ] **DIST-03**: Claimed listings display a "Verified" badge on the portal
 - [ ] **DIST-04**: District can update details on their claimed listings
@@ -125,7 +125,7 @@
 | DATA-11 | Phase 6: Data Enrichment | Complete |
 | DATA-12 | Phase 6: Data Enrichment | Complete |
 | DATA-13 | Phase 2: First Source Pipeline | Complete |
-| DIST-01 | Phase 7: District Accounts | Pending |
+| DIST-01 | Phase 7: District Accounts | Complete |
 | DIST-02 | Phase 7: District Accounts | Pending |
 | DIST-03 | Phase 7: District Accounts | Pending |
 | DIST-04 | Phase 7: District Accounts | Pending |
