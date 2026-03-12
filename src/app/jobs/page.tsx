@@ -32,6 +32,7 @@ function parseSearchParams(
     zip: str("zip"),
     radius: params.radius ? Number(params.radius) : undefined,
     unspecified: params.unspecified === "false" ? false : undefined,
+    verified: params.verified === "true" ? true : undefined,
   };
 }
 

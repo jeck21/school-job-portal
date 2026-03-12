@@ -35,7 +35,8 @@ export function SearchFilterBar() {
     filters.cert.length > 0 ||
     filters.salary !== false ||
     (filters.zip !== "" && filters.zip.length === 5) ||
-    filters.unspecified !== true;
+    filters.unspecified !== true ||
+    filters.verified !== false;
 
   function clearAll() {
     setFilters({
@@ -48,6 +49,7 @@ export function SearchFilterBar() {
       zip: null,
       radius: null,
       unspecified: null,
+      verified: null,
     });
     if (searchRef.current) {
       searchRef.current.value = "";
@@ -156,6 +158,26 @@ export function SearchFilterBar() {
             className="cursor-pointer text-xs text-muted-foreground"
           >
             Include Unspecified
+          </Label>
+        </div>
+
+        <Separator orientation="vertical" className="mx-1 h-6" />
+
+        {/* Verified only toggle */}
+        <div className="flex items-center gap-1.5">
+          <Switch
+            id="verified-toggle"
+            checked={filters.verified}
+            onCheckedChange={(checked) =>
+              setFilters({ verified: checked || null })
+            }
+            className="scale-75"
+          />
+          <Label
+            htmlFor="verified-toggle"
+            className="cursor-pointer text-xs text-muted-foreground"
+          >
+            Verified Only
           </Label>
         </div>
 

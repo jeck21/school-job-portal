@@ -1,5 +1,6 @@
 "use server";
 
+import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
 export type JobFilters = {
@@ -12,6 +13,7 @@ export type JobFilters = {
   zip?: string;
   radius?: number;
   unspecified?: boolean;
+  verified?: boolean;
 };
 
 export async function searchJobs(
@@ -19,7 +21,8 @@ export async function searchJobs(
   offset: number = 0,
   limit: number = 25
 ) {
-  const supabase = await createClient();
+  // Use admin client to bypass RLS — job listings are public data
+  const supabase = createAdminClient();
 
   // If zip is provided, look up coordinates from zip_coordinates table
   let zipLat: number | null = null;
@@ -62,9 +65,21 @@ export async function searchJobs(
 
   if (error) throw error;
 
-  const totalCount = data?.[0]?.total_count ?? 0;
+  let results = data ?? [];
+
+  // Client-side verified filter
+  if (filters.verified) {
+    results = results.filter(
+      (row: Record<string, unknown>) => row.claimed_by_district_id != null
+    );
+  }
+
+  const totalCount = filters.verified
+    ? results.length
+    : (data?.[0]?.total_count ?? 0);
+
   return {
-    jobs: data ?? [],
+    jobs: results,
     count: Number(totalCount),
   };
 }

@@ -18,6 +18,7 @@ const filterParsers = {
   zip: parseAsString.withDefault(""),
   radius: parseAsInteger.withDefault(25),
   unspecified: parseAsBoolean.withDefault(false),
+  verified: parseAsBoolean.withDefault(false),
 };
 
 export function useJobFilters() {
@@ -35,6 +36,7 @@ export function getDefaultFilters() {
     zip: "",
     radius: 25,
     unspecified: false,
+    verified: false,
   };
 }
 
