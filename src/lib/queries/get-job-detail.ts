@@ -12,6 +12,7 @@ export async function getJobDetail(id: string) {
       id, title, description, url, location_raw, city, state,
       school_type, salary_raw, salary_mentioned,
       first_seen_at, last_verified_at, is_active,
+      claimed_by_district_id,
       schools ( name, district_name )
     `
     )

@@ -70,6 +70,8 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
             district_name: (row.district_name as string | null) ?? null,
           }
         : null,
+      claimed_by_district_id:
+        (row.claimed_by_district_id as string | null) ?? null,
     })
   );
 

@@ -23,6 +23,7 @@ type JobDetailData = {
   last_verified_at: string;
   is_active: boolean;
   schools: { name: string; district_name: string | null } | null;
+  claimed_by_district_id?: string | null;
 };
 
 export function JobDetailModal({ job }: { job: JobDetailData }) {

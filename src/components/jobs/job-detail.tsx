@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { VerifiedBadge } from "@/components/district/verified-badge";
 import { DialogTitle } from "@/components/ui/dialog";
 import { formatDateDisplay } from "@/lib/format-date";
 import { ReportButton } from "@/components/jobs/report-button";
@@ -25,6 +26,7 @@ type JobDetailData = {
   last_verified_at: string;
   is_active: boolean;
   schools: { name: string; district_name: string | null } | null;
+  claimed_by_district_id?: string | null;
 };
 
 function getSchoolTypeBadgeVariant(
@@ -68,6 +70,7 @@ export function JobDetail({
         {/* School + Location */}
         <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <span>{job.schools?.name ?? "School"}</span>
+          {job.claimed_by_district_id && <VerifiedBadge />}
           <span className="flex items-center gap-1">
             <MapPin className="size-3.5" />
             {location}

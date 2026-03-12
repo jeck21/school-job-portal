@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { VerifiedBadge } from "@/components/district/verified-badge";
 import { formatRelativeDate } from "@/lib/format-date";
 
 type JobRowData = {
@@ -13,6 +14,7 @@ type JobRowData = {
   first_seen_at: string;
   url: string;
   schools: { name: string; district_name: string | null } | null;
+  claimed_by_district_id?: string | null;
 };
 
 function getSchoolTypeBadgeVariant(
@@ -44,6 +46,7 @@ export function JobRow({ job }: { job: JobRowData }) {
         <span className="font-medium text-foreground">{job.title}</span>
         <span className="text-muted-foreground/60">&middot;</span>
         <span className="text-muted-foreground">{schoolName}</span>
+        {job.claimed_by_district_id && <VerifiedBadge />}
         {location && (
           <>
             <span className="text-muted-foreground/60">&middot;</span>

@@ -17,6 +17,7 @@ type JobData = {
   first_seen_at: string;
   url: string;
   schools: { name: string; district_name: string | null } | null;
+  claimed_by_district_id?: string | null;
 };
 
 // Map flat RPC fields to the nested shape JobRow expects
@@ -35,6 +36,8 @@ function mapSearchResult(row: Record<string, unknown>): JobData {
           district_name: (row.district_name as string | null) ?? null,
         }
       : null,
+    claimed_by_district_id:
+      (row.claimed_by_district_id as string | null) ?? null,
   };
 }
 
