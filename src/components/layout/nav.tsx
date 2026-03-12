@@ -5,12 +5,25 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-export function Nav({ onLinkClick }: { onLinkClick?: () => void }) {
+export function Nav({
+  onLinkClick,
+  isLoggedIn = false,
+}: {
+  onLinkClick?: () => void;
+  isLoggedIn?: boolean;
+}) {
   const pathname = usePathname();
+
+  // When logged in, replace "For Schools" with "Dashboard"
+  const navItems = siteConfig.nav.map((item) =>
+    isLoggedIn && item.href === "/for-schools"
+      ? { label: "Dashboard", href: "/for-schools/dashboard" }
+      : item
+  );
 
   return (
     <nav className="flex items-center gap-1">
-      {siteConfig.nav.map((item) => (
+      {navItems.map((item) => (
         <Link
           key={item.href}
           href={item.href}

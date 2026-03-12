@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 
 export function Header({ userEmail }: { userEmail: string | null }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isLoggedIn = !!userEmail;
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg">
@@ -25,28 +26,20 @@ export function Header({ userEmail }: { userEmail: string | null }) {
 
         {/* Desktop Nav (centered) */}
         <div className="hidden md:flex">
-          <Nav />
+          <Nav isLoggedIn={isLoggedIn} />
         </div>
 
-        {/* Desktop CTA + Auth */}
+        {/* Desktop right side */}
         <div className="hidden items-center gap-3 md:flex">
-          {userEmail ? (
-            <>
-              <Link
-                href="/for-schools/dashboard"
-                className="text-xs text-muted-foreground hover:text-foreground"
+          {isLoggedIn ? (
+            <form action={logout}>
+              <button
+                type="submit"
+                className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:text-foreground"
               >
-                Dashboard
-              </Link>
-              <form action={logout}>
-                <button
-                  type="submit"
-                  className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:text-foreground"
-                >
-                  Log Out
-                </button>
-              </form>
-            </>
+                Log Out
+              </button>
+            </form>
           ) : (
             <Link href="/jobs" className={cn(buttonVariants({ size: "sm" }))}>
               Browse Jobs
@@ -72,25 +65,16 @@ export function Header({ userEmail }: { userEmail: string | null }) {
         )}
       >
         <div className="flex flex-col gap-2 px-4 py-4">
-          <Nav onLinkClick={() => setMobileOpen(false)} />
-          {userEmail ? (
-            <>
-              <Link
-                href="/for-schools/dashboard"
-                onClick={() => setMobileOpen(false)}
-                className="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+          <Nav onLinkClick={() => setMobileOpen(false)} isLoggedIn={isLoggedIn} />
+          {isLoggedIn ? (
+            <form action={logout}>
+              <button
+                type="submit"
+                className="w-full rounded-md px-3 py-1.5 text-left text-sm font-medium text-muted-foreground hover:text-foreground"
               >
-                Dashboard
-              </Link>
-              <form action={logout}>
-                <button
-                  type="submit"
-                  className="w-full rounded-md px-3 py-1.5 text-left text-sm font-medium text-muted-foreground hover:text-foreground"
-                >
-                  Log Out
-                </button>
-              </form>
-            </>
+                Log Out
+              </button>
+            </form>
           ) : (
             <Link
               href="/jobs"
