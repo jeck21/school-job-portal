@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ListingCard } from "./listing-card";
 import { ClaimReview } from "./claim-review";
@@ -21,8 +22,10 @@ export function DashboardTabs({
   claimMatches,
   districtId,
 }: Props) {
+  const [tab, setTab] = useState("active");
+
   return (
-    <Tabs defaultValue="active" className="w-full">
+    <Tabs value={tab} onValueChange={setTab} className="w-full">
       <div className="flex items-center justify-between gap-4">
         <TabsList>
           <TabsTrigger value="active">
@@ -33,13 +36,14 @@ export function DashboardTabs({
           </TabsTrigger>
         </TabsList>
 
-        <TabsTrigger
-          value="create"
-          className="inline-flex items-center gap-1.5 rounded-md bg-cta px-3 py-1.5 text-sm font-medium text-cta-foreground shadow-sm transition-colors hover:bg-cta/90 data-[state=active]:bg-cta data-[state=active]:text-cta-foreground"
+        <button
+          type="button"
+          onClick={() => setTab("create")}
+          className="inline-flex items-center gap-1.5 rounded-md bg-cta px-3 py-1.5 text-sm font-medium text-cta-foreground shadow-sm transition-colors hover:bg-cta/90"
         >
           <Plus className="size-4" />
           Create New
-        </TabsTrigger>
+        </button>
       </div>
 
       <TabsContent value="active" className="mt-4 space-y-4">
