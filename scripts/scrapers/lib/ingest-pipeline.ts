@@ -16,6 +16,8 @@ import {
 } from "./job-dedup";
 import { detectSalary } from "./enrichment/salary-detector";
 import { extractCertifications } from "./enrichment/cert-extractor";
+import { compareTwoStrings } from "string-similarity";
+import { normalizeSchoolName } from "./school-matcher";
 
 const BATCH_SIZE = 25;
 
@@ -93,6 +95,90 @@ async function getExistingExternalIds(
 
   console.log(`[ingest] Found ${ids.size} existing jobs for source`);
   return ids;
+}
+
+/**
+ * Auto-claim a newly inserted job for a verified district if the school's
+ * district_name matches the district's name. Tries exact match first,
+ * then falls back to fuzzy Dice coefficient at 0.8 threshold.
+ */
+async function autoClaimForVerifiedDistrict(
+  supabase: SupabaseClient,
+  jobId: string,
+  schoolId: string | null
+): Promise<void> {
+  if (!schoolId) return;
+
+  try {
+    // Get the school's district_name
+    const { data: school } = await supabase
+      .from("schools")
+      .select("district_name")
+      .eq("id", schoolId)
+      .single();
+
+    if (!school?.district_name) return;
+
+    // Get all verified districts
+    const { data: verifiedDistricts } = await supabase
+      .from("districts")
+      .select("id, name")
+      .eq("verified", true);
+
+    if (!verifiedDistricts || verifiedDistricts.length === 0) return;
+
+    // Try exact match first
+    const schoolDistrictLower = school.district_name.toLowerCase();
+    let matchedDistrictId: string | null = null;
+
+    for (const district of verifiedDistricts) {
+      if (district.name.toLowerCase() === schoolDistrictLower) {
+        matchedDistrictId = district.id;
+        break;
+      }
+    }
+
+    // Fall back to fuzzy match
+    if (!matchedDistrictId) {
+      const normalizedSchool = normalizeSchoolName(school.district_name);
+      for (const district of verifiedDistricts) {
+        const normalizedDistrict = normalizeSchoolName(district.name);
+        const score = compareTwoStrings(normalizedSchool, normalizedDistrict);
+        if (score >= 0.8) {
+          matchedDistrictId = district.id;
+          break;
+        }
+      }
+    }
+
+    if (matchedDistrictId) {
+      // Check the job isn't already claimed
+      const { data: job } = await supabase
+        .from("jobs")
+        .select("claimed_by_district_id")
+        .eq("id", jobId)
+        .single();
+
+      if (job && !job.claimed_by_district_id) {
+        await supabase
+          .from("jobs")
+          .update({
+            claimed_by_district_id: matchedDistrictId,
+            claimed_at: new Date().toISOString(),
+          })
+          .eq("id", jobId);
+
+        console.log(
+          `[ingest] Auto-claimed job ${jobId} for verified district: ${school.district_name}`
+        );
+      }
+    }
+  } catch (error) {
+    // Auto-claim failure is non-fatal -- log and continue
+    console.error(
+      `[ingest] Auto-claim error for job ${jobId}: ${(error as Error).message}`
+    );
+  }
 }
 
 /**
@@ -246,8 +332,24 @@ async function processBatch(
           ? job.certificates
           : extractCertifications(job.description);
 
+      // Delist suppression: check if existing job has been delisted by a district
+      let isDelisted = false;
+      const { data: existingJob } = await supabase
+        .from("jobs")
+        .select("delisted_at")
+        .eq("source_id", sourceId)
+        .eq("external_id", job.externalId)
+        .single();
+
+      if (existingJob?.delisted_at) {
+        isDelisted = true;
+        console.log(
+          `[ingest] Skipping is_active update for delisted job: ${job.externalId}`
+        );
+      }
+
       // Build job record for upsert
-      const jobRecord = {
+      const jobRecord: Record<string, unknown> = {
         source_id: sourceId,
         external_id: job.externalId,
         school_id: schoolId,
@@ -263,9 +365,13 @@ async function processBatch(
         certifications: enrichedCerts.length > 0 ? enrichedCerts : null,
         salary_mentioned: salaryResult.mentioned,
         salary_raw: salaryResult.raw,
-        is_active: true,
         last_verified_at: new Date().toISOString(),
       };
+
+      // Only set is_active if the job has not been delisted by a district
+      if (!isDelisted) {
+        jobRecord.is_active = true;
+      }
 
       // Upsert job
       const { data: upsertedJob, error: jobError } = await supabase
@@ -281,11 +387,17 @@ async function processBatch(
       }
 
       // Track added vs updated
-      if (existingIds.has(job.externalId)) {
-        stats.updated++;
-      } else {
+      const isNewJob = !existingIds.has(job.externalId);
+      if (isNewJob) {
         stats.added++;
         existingIds.add(job.externalId);
+
+        // Auto-claim: if a verified district matches this job's school, claim it
+        if (upsertedJob && !isDelisted) {
+          await autoClaimForVerifiedDistrict(supabase, upsertedJob.id, schoolId);
+        }
+      } else {
+        stats.updated++;
       }
 
       // Upsert job_sources for source attribution
