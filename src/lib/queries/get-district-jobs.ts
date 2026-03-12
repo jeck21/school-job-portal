@@ -6,6 +6,8 @@ export type DistrictJob = {
   id: string;
   title: string;
   schoolName: string;
+  description: string | null;
+  salary_raw: string | null;
   first_seen_at: string;
   is_manual: boolean;
   delisted_at: string | null;
@@ -23,7 +25,7 @@ export async function getDistrictJobs(
 
   let query = supabase
     .from("jobs")
-    .select("id, title, first_seen_at, is_manual, delisted_at, url, schools(name)")
+    .select("id, title, description, salary_raw, first_seen_at, is_manual, delisted_at, url, schools(name)")
     .eq("claimed_by_district_id", districtId);
 
   if (filter === "active") {
@@ -44,6 +46,8 @@ export async function getDistrictJobs(
   return (data ?? []).map((job) => ({
     id: job.id,
     title: job.title,
+    description: job.description,
+    salary_raw: job.salary_raw,
     schoolName:
       (job.schools as unknown as { name: string } | null)?.name ?? "Unknown",
     first_seen_at: job.first_seen_at,
