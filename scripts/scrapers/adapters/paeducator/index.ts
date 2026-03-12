@@ -22,8 +22,11 @@ const FALLBACK_JOB_URL = (id: number) =>
 /** Polite delay between job detail requests (1.5 seconds) */
 const REQUEST_DELAY_MS = 1500;
 
+/** Timeout per job detail request (15 seconds) */
+const FETCH_TIMEOUT_MS = 15_000;
+
 /** Progress logging interval */
-const LOG_INTERVAL = 50;
+const LOG_INTERVAL = 25;
 
 const USER_AGENT = "PAEdJobs-Bot/1.0 (+https://school-job-portal.vercel.app)";
 
@@ -77,6 +80,7 @@ export class PAeducatorAdapter implements SourceAdapter {
       try {
         const detailResponse = await fetch(JOB_DETAIL_URL(jobId), {
           headers: { "User-Agent": USER_AGENT },
+          signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
         });
 
         if (!detailResponse.ok) {
@@ -95,8 +99,8 @@ export class PAeducatorAdapter implements SourceAdapter {
         );
       }
 
-      // Log progress every LOG_INTERVAL jobs
-      if ((i + 1) % LOG_INTERVAL === 0) {
+      // Log progress: first job + every LOG_INTERVAL jobs
+      if (i === 0 || (i + 1) % LOG_INTERVAL === 0) {
         console.log(`[paeducator] Progress: ${i + 1}/${jobIds.length} jobs fetched`);
       }
 
@@ -119,7 +123,7 @@ export class PAeducatorAdapter implements SourceAdapter {
     const org = detail.organization;
 
     // Use employer's direct URL when available, fallback to PAeducator job page
-    const url = org.url && org.url.trim() !== ""
+    const url = org?.url && org.url.trim() !== ""
       ? org.url
       : FALLBACK_JOB_URL(detail.id);
 
@@ -127,13 +131,13 @@ export class PAeducatorAdapter implements SourceAdapter {
       externalId: String(detail.id),
       title: detail.jobTitle,
       url,
-      locationRaw: `${org.city}, PA ${org.zip}`,
-      city: org.city,
+      locationRaw: org ? `${org.city}, PA ${org.zip}` : "PA",
+      city: org?.city,
       state: "PA",
-      zipCode: org.zip,
-      schoolName: org.name,
+      zipCode: org?.zip,
+      schoolName: org?.name ?? "Unknown School",
       description: detail.description ? stripHtml(detail.description) : undefined,
-      certificates: detail.certifications.map((c) => c.name),
+      certificates: detail.certifications?.map((c) => c.name) ?? [],
       deadline: detail.applicationDeadlineDate,
       postedDate: detail.postedDttm,
     };

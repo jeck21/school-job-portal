@@ -124,8 +124,8 @@ export function CreateListingForm() {
           <Input
             id="url"
             name="url"
-            type="url"
-            placeholder="https://..."
+            type="text"
+            placeholder="https://district.org/careers or district.org/careers"
             required
           />
         </div>

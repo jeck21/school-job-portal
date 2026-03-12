@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { Briefcase } from "lucide-react";
 import { searchJobs, type JobFilters } from "@/lib/queries/search-jobs";
 import { JobList } from "@/components/jobs/job-list";
 import { SearchFilterBar } from "@/components/jobs/search-filter-bar";

@@ -20,6 +20,7 @@ export const DEDUP_REVIEW_HIGH = 0.85;
  * lowercase, strip non-alphanumeric (except spaces), collapse whitespace, trim.
  */
 export function normalizeForDedup(text: string): string {
+  if (!text) return "";
   return text
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, "")

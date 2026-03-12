@@ -14,6 +14,7 @@ const NEAR_MISS_THRESHOLD = 0.6;
  * lowercase, strip common suffixes, collapse whitespace, remove hyphens.
  */
 export function normalizeSchoolName(name: string): string {
+  if (!name) return "";
   return name
     .toLowerCase()
     .replace(/\bschool\s+district\b/gi, "")

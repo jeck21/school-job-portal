@@ -21,9 +21,9 @@ export interface PAeducatorJobDetail {
     zip: string;
     url: string;
     intermediateUnit_Id: string;
-  };
+  } | null;
   certifications: Array<{
     name: string;
     certificationType: string;
-  }>;
+  }> | null;
 }

@@ -87,6 +87,7 @@ CREATE POLICY "Districts can insert manual jobs"
   );
 
 -- 7 & 8. Update search_jobs RPC: exclude delisted jobs and return claimed_by_district_id
+DROP FUNCTION IF EXISTS search_jobs;
 CREATE OR REPLACE FUNCTION search_jobs(
   search_term TEXT DEFAULT NULL,
   school_types TEXT[] DEFAULT NULL,

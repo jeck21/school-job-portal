@@ -114,11 +114,16 @@ export async function createManualJob(
   const gradeBand = formData.getAll("gradeBand") as string[];
   const subjectArea = formData.getAll("subjectArea") as string[];
   const salaryRaw = formData.get("salaryRaw") as string;
-  const url = formData.get("url") as string;
+  let url = (formData.get("url") as string)?.trim();
   const expiresAt = formData.get("expiresAt") as string;
 
   if (!title || !description || !url) {
     return { success: false, error: "Title, description, and application URL are required" };
+  }
+
+  // Auto-prepend https:// if no protocol provided
+  if (url && !/^https?:\/\//i.test(url)) {
+    url = `https://${url}`;
   }
 
   const admin = createAdminClient();
