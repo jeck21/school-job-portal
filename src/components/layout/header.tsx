@@ -5,11 +5,11 @@ import Link from "next/link";
 import { GraduationCap, Menu, X } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { buttonVariants } from "@/components/ui/button";
+import { logout } from "@/lib/actions/auth-actions";
 import { Nav } from "@/components/layout/nav";
-import { AuthIndicator } from "@/components/layout/auth-indicator";
 import { cn } from "@/lib/utils";
 
-export function Header() {
+export function Header({ userEmail }: { userEmail: string | null }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -30,10 +30,28 @@ export function Header() {
 
         {/* Desktop CTA + Auth */}
         <div className="hidden items-center gap-3 md:flex">
-          <AuthIndicator />
-          <Link href="/jobs" className={cn(buttonVariants({ size: "sm" }))}>
-            Browse Jobs
-          </Link>
+          {userEmail ? (
+            <>
+              <Link
+                href="/for-schools/dashboard"
+                className="text-xs text-muted-foreground hover:text-foreground"
+              >
+                Dashboard
+              </Link>
+              <form action={logout}>
+                <button
+                  type="submit"
+                  className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:text-foreground"
+                >
+                  Log Out
+                </button>
+              </form>
+            </>
+          ) : (
+            <Link href="/jobs" className={cn(buttonVariants({ size: "sm" }))}>
+              Browse Jobs
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -55,14 +73,33 @@ export function Header() {
       >
         <div className="flex flex-col gap-2 px-4 py-4">
           <Nav onLinkClick={() => setMobileOpen(false)} />
-          <AuthIndicator />
-          <Link
-            href="/jobs"
-            onClick={() => setMobileOpen(false)}
-            className={cn(buttonVariants({ size: "sm" }), "mt-2 w-full")}
-          >
-            Browse Jobs
-          </Link>
+          {userEmail ? (
+            <>
+              <Link
+                href="/for-schools/dashboard"
+                onClick={() => setMobileOpen(false)}
+                className="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
+                Dashboard
+              </Link>
+              <form action={logout}>
+                <button
+                  type="submit"
+                  className="w-full rounded-md px-3 py-1.5 text-left text-sm font-medium text-muted-foreground hover:text-foreground"
+                >
+                  Log Out
+                </button>
+              </form>
+            </>
+          ) : (
+            <Link
+              href="/jobs"
+              onClick={() => setMobileOpen(false)}
+              className={cn(buttonVariants({ size: "sm" }), "mt-2 w-full")}
+            >
+              Browse Jobs
+            </Link>
+          )}
         </div>
       </div>
     </header>

@@ -4,6 +4,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { createClient } from "@/lib/supabase/server";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -17,13 +18,18 @@ export const metadata: Metadata = {
   description: siteConfig.description,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   modal,
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
 }>) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontSans.variable} font-sans antialiased`}>
@@ -35,7 +41,7 @@ export default function RootLayout({
         >
           <NuqsAdapter>
             <div className="flex min-h-screen flex-col">
-              <Header />
+              <Header userEmail={user?.email ?? null} />
               <main className="flex-1">{children}</main>
               {modal}
               <Footer />
