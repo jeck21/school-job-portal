@@ -4,6 +4,8 @@ import { getAllVerifiedDistricts } from "@/lib/queries/get-all-districts";
 import { VerifiedBadge } from "@/components/district/verified-badge";
 import { ExternalLink } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Verified School Districts | PA School Jobs",
   description:
