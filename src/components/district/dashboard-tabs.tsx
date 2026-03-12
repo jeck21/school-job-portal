@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ListingCard } from "./listing-card";
 import { ClaimReview } from "./claim-review";
 import { CreateListingForm } from "./create-listing-form";
+import { Plus } from "lucide-react";
 import type { DistrictJob } from "@/lib/queries/get-district-jobs";
 import type { ClaimMatch } from "@/lib/queries/get-claim-matches";
 
@@ -22,15 +23,24 @@ export function DashboardTabs({
 }: Props) {
   return (
     <Tabs defaultValue="active" className="w-full">
-      <TabsList>
-        <TabsTrigger value="active">
-          Active Listings ({activeJobs.length})
+      <div className="flex items-center justify-between gap-4">
+        <TabsList>
+          <TabsTrigger value="active">
+            Active Listings ({activeJobs.length})
+          </TabsTrigger>
+          <TabsTrigger value="delisted">
+            Delisted ({delistedJobs.length})
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsTrigger
+          value="create"
+          className="inline-flex items-center gap-1.5 rounded-md bg-cta px-3 py-1.5 text-sm font-medium text-cta-foreground shadow-sm transition-colors hover:bg-cta/90 data-[state=active]:bg-cta data-[state=active]:text-cta-foreground"
+        >
+          <Plus className="size-4" />
+          Create New
         </TabsTrigger>
-        <TabsTrigger value="delisted">
-          Delisted ({delistedJobs.length})
-        </TabsTrigger>
-        <TabsTrigger value="create">Create New</TabsTrigger>
-      </TabsList>
+      </div>
 
       <TabsContent value="active" className="mt-4 space-y-4">
         <ClaimReview matches={claimMatches} districtId={districtId} />
