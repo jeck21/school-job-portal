@@ -175,6 +175,6 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 4. Search & Filters | 2/2 | Complete   | 2026-03-11 |
 | 5. Additional Sources | 3/3 | Complete   | 2026-03-11 |
 | 6. Data Enrichment | 2/2 | Complete | 2026-03-11 |
-| 7. District Accounts | 1/3 | In Progress|  |
+| 7. District Accounts | 2/3 | In Progress|  |
 | 8. UI Polish & Static Pages | 0/2 | Not started | - |
 | 9. Operations & Launch | 0/2 | Not started | - |
