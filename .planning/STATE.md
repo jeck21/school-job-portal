@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 8 context gathered
-last_updated: "2026-03-13T21:58:26.371Z"
-last_activity: 2026-03-12 -- Executed plan 07-02 (District dashboard & listing management)
+stopped_at: Completed 08-02-PLAN.md
+last_updated: "2026-03-13T22:17:10Z"
+last_activity: 2026-03-13 -- Executed plan 08-02 (About & Coaching pages)
 progress:
   total_phases: 9
   completed_phases: 6
   total_plans: 16
-  completed_plans: 15
-  percent: 94
+  completed_plans: 17
+  percent: 96
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** Educators can find every relevant PA job opening in one place with filters that actually work -- without stale postings or clunky interfaces.
-**Current focus:** Phase 7 - District Accounts
+**Current focus:** Phase 8 - UI Polish & Static Pages
 
 ## Current Position
 
-Phase: 7 of 9 (District Accounts) -- IN PROGRESS
-Plan: 2 of 3 in current phase (07-02 complete)
+Phase: 8 of 9 (UI Polish & Static Pages) -- IN PROGRESS
+Plan: 2 of 3 in current phase (08-02 complete)
 Status: In Progress
-Last activity: 2026-03-12 -- Executed plan 07-02 (District dashboard & listing management)
+Last activity: 2026-03-13 -- Executed plan 08-02 (About & Coaching pages)
 
-Progress: [█████████░] 94%
+Progress: [█████████░] 96%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
-- Average duration: ~9 min
-- Total execution time: ~1.6 hours
+- Total plans completed: 17
+- Average duration: ~8 min
+- Total execution time: ~1.7 hours
 
 **By Phase:**
 
@@ -50,9 +50,10 @@ Progress: [█████████░] 94%
 | 5-Additional Sources | 3/3 | ~8 min | ~3 min |
 | 6-Data Enrichment | 2/2 | ~6 min | ~3 min |
 | 7-District Accounts | 2/3 | ~10 min | ~5 min |
+| 8-UI Polish | 2/3 | ~8 min | ~4 min |
 
 **Recent Trend:**
-- Last 5 plans: 05-03 (1 min), 06-01 (3 min), 06-02 (3 min), 07-01 (5 min), 07-02 (5 min)
+- Last 5 plans: 06-02 (3 min), 07-01 (5 min), 07-02 (5 min), 08-01 (4 min), 08-02 (4 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -111,6 +112,13 @@ Recent decisions affecting current work:
 - [Phase 07-02]: Admin client used for all dashboard queries to bypass RLS restrictions
 - [Phase 07-02]: Native HTML checkboxes for form data submission reliability over Base UI Checkbox
 - [Phase 07-02]: Auto-claim tries exact district name match first, fuzzy Dice fallback at 0.8
+- [08-01]: Bottom-sheet dialog via base-ui Dialog.Root positioned fixed bottom-0 for mobile filter drawer
+- [08-01]: Count state lifted to JobsPageClient wrapper via onCountChange callback from JobList
+- [08-01]: useScrollDirection hook with 60px threshold for auto-hide header on mobile
+- [08-01]: Responsive layout purely via Tailwind classes (hidden/md:flex) -- no JS media queries
+- [08-02]: Resend client instantiated per-call inside server action (consistent with AI client pattern)
+- [08-02]: useActionState (React 19) for coaching form submission state management
+- [08-02]: HTML table format for coaching email body (reliable across email clients)
 
 ### Pending Todos
 
@@ -123,6 +131,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-13T21:58:26.361Z
-Stopped at: Phase 8 context gathered
-Resume file: .planning/phases/08-ui-polish-static-pages/08-CONTEXT.md
+Last session: 2026-03-13T22:17:10Z
+Stopped at: Completed 08-02-PLAN.md
+Resume file: .planning/phases/08-ui-polish-static-pages/08-02-SUMMARY.md
