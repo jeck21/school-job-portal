@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { GraduationCap, Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
+import { GraduationCap, Menu, X, Sun, Moon } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { buttonVariants } from "@/components/ui/button";
 import { logout } from "@/lib/actions/auth-actions";
@@ -33,6 +34,22 @@ function useScrollDirection() {
   return hidden;
 }
 
+function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <div className="size-8" />;
+  return (
+    <button
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      className="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground hover:text-foreground"
+      aria-label="Toggle theme"
+    >
+      {resolvedTheme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
+    </button>
+  );
+}
+
 export function Header({ userEmail }: { userEmail: string | null }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const isLoggedIn = !!userEmail;
@@ -61,6 +78,7 @@ export function Header({ userEmail }: { userEmail: string | null }) {
 
         {/* Desktop right side */}
         <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
           {isLoggedIn ? (
             <form action={logout}>
               <button
