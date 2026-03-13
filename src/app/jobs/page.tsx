@@ -1,8 +1,5 @@
-import { Suspense } from "react";
 import { searchJobs, type JobFilters } from "@/lib/queries/search-jobs";
-import { JobList } from "@/components/jobs/job-list";
-import { SearchFilterBar } from "@/components/jobs/search-filter-bar";
-import { Skeleton } from "@/components/ui/skeleton";
+import { JobsPageClient } from "@/app/jobs/jobs-page-client";
 
 interface JobsPageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -34,19 +31,6 @@ function parseSearchParams(
     unspecified: params.unspecified === "false" ? false : undefined,
     verified: params.verified === "true" ? true : undefined,
   };
-}
-
-function JobListSkeleton() {
-  return (
-    <div className="space-y-3">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <div key={i} className="space-y-2 px-4 py-3">
-          <Skeleton className="h-4 w-3/4" />
-          <Skeleton className="h-3 w-1/3" />
-        </div>
-      ))}
-    </div>
-  );
 }
 
 export default async function JobsPage({ searchParams }: JobsPageProps) {
@@ -82,15 +66,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
         Browse PA educator job openings across the state.
       </p>
 
-      <div className="mt-6">
-        <SearchFilterBar />
-      </div>
-
-      <div className="mt-6">
-        <Suspense fallback={<JobListSkeleton />}>
-          <JobList initialJobs={mappedJobs} totalCount={count} />
-        </Suspense>
-      </div>
+      <JobsPageClient initialJobs={mappedJobs} totalCount={count} />
     </div>
   );
 }

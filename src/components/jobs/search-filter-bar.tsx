@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { FilterDropdown } from "@/components/jobs/filter-dropdown";
 import { RadiusFilter } from "@/components/jobs/radius-filter";
 import { ActiveFilters } from "@/components/jobs/active-filters";
+import { MobileFilterDrawer } from "@/components/jobs/mobile-filter-drawer";
 import { useJobFilters } from "@/lib/hooks/use-job-filters";
 import {
   SCHOOL_TYPES,
@@ -19,7 +20,7 @@ import {
   CERTIFICATION_TYPES,
 } from "@/lib/filter-options";
 
-export function SearchFilterBar() {
+export function SearchFilterBar({ count = 0 }: { count?: number }) {
   const [filters, setFilters] = useJobFilters();
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -58,34 +59,41 @@ export function SearchFilterBar() {
 
   return (
     <div className="space-y-3">
-      {/* Search input */}
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-        <Input
-          ref={searchRef}
-          type="text"
-          placeholder="Search by title, school, or location..."
-          defaultValue={filters.q}
-          onChange={(e) => debouncedSetQ(e.target.value)}
-          className="h-10 pl-9 pr-9"
-        />
-        {filters.q && (
-          <button
-            type="button"
-            onClick={() => {
-              setFilters({ q: null });
-              if (searchRef.current) searchRef.current.value = "";
-            }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-            aria-label="Clear search"
-          >
-            <X className="size-4" />
-          </button>
-        )}
+      {/* Search input + mobile filter trigger */}
+      <div className="flex gap-2">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            ref={searchRef}
+            type="text"
+            placeholder="Search by title, school, or location..."
+            defaultValue={filters.q}
+            onChange={(e) => debouncedSetQ(e.target.value)}
+            className="h-10 pl-9 pr-9"
+          />
+          {filters.q && (
+            <button
+              type="button"
+              onClick={() => {
+                setFilters({ q: null });
+                if (searchRef.current) searchRef.current.value = "";
+              }}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              aria-label="Clear search"
+            >
+              <X className="size-4" />
+            </button>
+          )}
+        </div>
+
+        {/* Mobile-only filter drawer trigger */}
+        <div className="flex-shrink-0 md:hidden">
+          <MobileFilterDrawer count={count} />
+        </div>
       </div>
 
-      {/* Filter row */}
-      <div className="flex flex-wrap items-center gap-2">
+      {/* Desktop filter row (hidden on mobile) */}
+      <div className="hidden flex-wrap items-center gap-2 md:flex">
         <FilterDropdown
           label="Type"
           options={SCHOOL_TYPES}
@@ -197,45 +205,47 @@ export function SearchFilterBar() {
         )}
       </div>
 
-      {/* Active filter chips */}
+      {/* Active filter chips (desktop only) */}
       {hasActiveFilters && (
-        <ActiveFilters
-          filters={filters}
-          onRemoveQ={() => {
-            setFilters({ q: null });
-            if (searchRef.current) searchRef.current.value = "";
-          }}
-          onRemoveType={(v) =>
-            setFilters({
-              type: filters.type.filter((t) => t !== v).length > 0
-                ? filters.type.filter((t) => t !== v)
-                : null,
-            })
-          }
-          onRemoveGrade={(v) =>
-            setFilters({
-              grade: filters.grade.filter((g) => g !== v).length > 0
-                ? filters.grade.filter((g) => g !== v)
-                : null,
-            })
-          }
-          onRemoveSubject={(v) =>
-            setFilters({
-              subject: filters.subject.filter((s) => s !== v).length > 0
-                ? filters.subject.filter((s) => s !== v)
-                : null,
-            })
-          }
-          onRemoveCert={(v) =>
-            setFilters({
-              cert: filters.cert.filter((c) => c !== v).length > 0
-                ? filters.cert.filter((c) => c !== v)
-                : null,
-            })
-          }
-          onRemoveSalary={() => setFilters({ salary: null })}
-          onRemoveZip={() => setFilters({ zip: null, radius: null })}
-        />
+        <div className="hidden md:block">
+          <ActiveFilters
+            filters={filters}
+            onRemoveQ={() => {
+              setFilters({ q: null });
+              if (searchRef.current) searchRef.current.value = "";
+            }}
+            onRemoveType={(v) =>
+              setFilters({
+                type: filters.type.filter((t) => t !== v).length > 0
+                  ? filters.type.filter((t) => t !== v)
+                  : null,
+              })
+            }
+            onRemoveGrade={(v) =>
+              setFilters({
+                grade: filters.grade.filter((g) => g !== v).length > 0
+                  ? filters.grade.filter((g) => g !== v)
+                  : null,
+              })
+            }
+            onRemoveSubject={(v) =>
+              setFilters({
+                subject: filters.subject.filter((s) => s !== v).length > 0
+                  ? filters.subject.filter((s) => s !== v)
+                  : null,
+              })
+            }
+            onRemoveCert={(v) =>
+              setFilters({
+                cert: filters.cert.filter((c) => c !== v).length > 0
+                  ? filters.cert.filter((c) => c !== v)
+                  : null,
+              })
+            }
+            onRemoveSalary={() => setFilters({ salary: null })}
+            onRemoveZip={() => setFilters({ zip: null, radius: null })}
+          />
+        </div>
       )}
     </div>
   );

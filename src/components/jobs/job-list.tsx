@@ -44,9 +44,11 @@ function mapSearchResult(row: Record<string, unknown>): JobData {
 export function JobList({
   initialJobs,
   totalCount,
+  onCountChange,
 }: {
   initialJobs: JobData[];
   totalCount: number;
+  onCountChange?: (count: number) => void;
 }) {
   const [filters] = useJobFilters();
   const [jobs, setJobs] = useState(initialJobs);
@@ -100,6 +102,7 @@ export function JobList({
       );
       setJobs(newJobs.map(mapSearchResult));
       setCount(newCount);
+      onCountChange?.(newCount);
       setIsFiltering(false);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
