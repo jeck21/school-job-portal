@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { searchJobs, type JobFilters } from "@/lib/queries/search-jobs";
 import { useJobFilters } from "@/lib/hooks/use-job-filters";
-import { Loader2 } from "lucide-react";
+import { Loader2, SearchX, Inbox } from "lucide-react";
 
 type JobData = {
   id: string;
@@ -138,7 +138,7 @@ export function JobList({
     <div>
       {/* Count header */}
       <p className="mb-4 text-sm text-muted-foreground">
-        {count} open position{count !== 1 ? "s" : ""}
+        <span className="font-semibold text-cta">{count}</span> open position{count !== 1 ? "s" : ""}
       </p>
 
       {/* Loading skeleton during filter transitions */}
@@ -153,6 +153,11 @@ export function JobList({
         </div>
       ) : jobs.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border/50 py-16 text-center">
+          {hasActiveFilters ? (
+            <SearchX className="mb-3 size-8 text-cta/60" />
+          ) : (
+            <Inbox className="mb-3 size-8 text-cta/60" />
+          )}
           <p className="text-lg font-medium text-muted-foreground">
             {hasActiveFilters
               ? "No jobs match your filters"

@@ -130,7 +130,7 @@ export function CoachingForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-cta px-8 text-sm font-medium text-cta-foreground transition-colors hover:bg-cta/90 disabled:opacity-60 sm:w-auto"
+        className="warm-glow-hover inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-cta px-8 text-sm font-medium text-cta-foreground transition-all duration-200 hover:scale-[1.02] hover:bg-cta/90 disabled:opacity-60 sm:w-auto"
       >
         {isPending ? (
           <>

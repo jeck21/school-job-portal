@@ -142,7 +142,7 @@ export default function AboutPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/coaching"
-              className="inline-flex h-11 items-center gap-2 rounded-lg bg-cta px-6 text-sm font-medium text-cta-foreground transition-colors hover:bg-cta/90"
+              className="warm-glow-hover inline-flex h-11 items-center gap-2 rounded-lg bg-cta px-6 text-sm font-medium text-cta-foreground transition-all duration-200 hover:scale-[1.02] hover:bg-cta/90"
             >
               Looking for career coaching?
               <ArrowRight className="size-4" />

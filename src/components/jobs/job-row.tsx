@@ -39,7 +39,7 @@ export function JobRow({ job }: { job: JobRowData }) {
   return (
     <Link
       href={`/jobs/${job.id}`}
-      className="block border-b border-border/50 px-4 py-3 transition-colors hover:bg-muted/50"
+      className="block border-b border-border/50 border-l-2 border-l-transparent px-4 py-3 transition-all duration-200 hover:border-l-cta/60 hover:bg-cta/[0.04]"
     >
       {/* Line 1: Title + School + Location — stacked on mobile, inline on desktop */}
       <div className="flex flex-col gap-0.5 text-sm sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-1.5">

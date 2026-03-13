@@ -135,3 +135,28 @@
     @apply font-sans;
   }
 }
+
+/* Warm utility classes */
+:root {
+  --warm-accent: oklch(0.76 0.08 70);
+  --warm-glow: oklch(0.72 0.13 70 / 0.06);
+  --warm-glow-strong: oklch(0.72 0.13 70 / 0.10);
+}
+
+.dark {
+  --warm-accent: oklch(0.80 0.08 70);
+  --warm-glow: oklch(0.76 0.13 70 / 0.08);
+  --warm-glow-strong: oklch(0.76 0.13 70 / 0.14);
+}
+
+.warm-glow {
+  background: radial-gradient(ellipse at 50% 50%, var(--warm-glow) 0%, transparent 70%);
+}
+
+.warm-glow-hover {
+  transition: box-shadow 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+.warm-glow-hover:hover {
+  box-shadow: 0 0 20px var(--warm-glow-strong), 0 0 4px var(--warm-glow);
+}

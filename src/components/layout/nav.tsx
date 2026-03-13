@@ -29,9 +29,9 @@ export function Nav({
           href={item.href}
           onClick={onLinkClick}
           className={cn(
-            "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+            "relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
             pathname === item.href
-              ? "text-foreground"
+              ? "text-foreground after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-4 after:-translate-x-1/2 after:rounded-full after:bg-cta"
               : "text-muted-foreground hover:text-foreground"
           )}
         >

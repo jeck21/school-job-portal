@@ -41,7 +41,7 @@ export function Header({ userEmail }: { userEmail: string | null }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg transition-transform duration-300",
+        "sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg backdrop-saturate-150 transition-transform duration-300",
         scrollHidden ? "-translate-y-full md:translate-y-0" : "translate-y-0"
       )}
     >
