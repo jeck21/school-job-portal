@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { GraduationCap, Menu, X } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -9,12 +9,42 @@ import { logout } from "@/lib/actions/auth-actions";
 import { Nav } from "@/components/layout/nav";
 import { cn } from "@/lib/utils";
 
+function useScrollDirection() {
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const threshold = 60;
+
+    function onScroll() {
+      const currentY = window.scrollY;
+      if (currentY > threshold && currentY > lastScrollY.current) {
+        setHidden(true);
+      } else if (currentY < lastScrollY.current) {
+        setHidden(false);
+      }
+      lastScrollY.current = currentY;
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return hidden;
+}
+
 export function Header({ userEmail }: { userEmail: string | null }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const isLoggedIn = !!userEmail;
+  const scrollHidden = useScrollDirection();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg transition-transform duration-300",
+        scrollHidden ? "-translate-y-full md:translate-y-0" : "translate-y-0"
+      )}
+    >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         {/* Logo / Site Name */}
         <Link href="/" className="flex items-center gap-2">

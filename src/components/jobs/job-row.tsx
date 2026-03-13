@@ -41,16 +41,22 @@ export function JobRow({ job }: { job: JobRowData }) {
       href={`/jobs/${job.id}`}
       className="block border-b border-border/50 px-4 py-3 transition-colors hover:bg-muted/50"
     >
-      {/* Line 1: Title . School . Location */}
-      <div className="flex flex-wrap items-baseline gap-x-1.5 text-sm">
+      {/* Line 1: Title + School + Location — stacked on mobile, inline on desktop */}
+      <div className="flex flex-col gap-0.5 text-sm sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-1.5">
         <span className="font-medium text-foreground">{job.title}</span>
-        <span className="text-muted-foreground/60">&middot;</span>
-        <span className="text-muted-foreground">{schoolName}</span>
-        {job.claimed_by_district_id && <VerifiedBadge />}
+        <span className="hidden text-muted-foreground/60 sm:inline">&middot;</span>
+        <span className="text-muted-foreground">
+          {schoolName}
+          {job.claimed_by_district_id && (
+            <span className="ml-1 inline-flex align-text-bottom">
+              <VerifiedBadge />
+            </span>
+          )}
+        </span>
         {location && (
           <>
-            <span className="text-muted-foreground/60">&middot;</span>
-            <span className="text-muted-foreground">{location}</span>
+            <span className="hidden text-muted-foreground/60 sm:inline">&middot;</span>
+            <span className="text-xs text-muted-foreground sm:text-sm">{location}</span>
           </>
         )}
       </div>
