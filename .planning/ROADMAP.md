@@ -143,8 +143,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
+- [ ] 08-01-PLAN.md — Mobile responsive layout: filter drawer, compact job rows, auto-hide header
+- [ ] 08-02-PLAN.md — About page with mission content, coaching form with Resend email delivery
+- [ ] 08-03-PLAN.md — Visual polish pass: warm accents, hover effects, micro-interactions across all pages
 
 ### Phase 9: Operations & Launch
 **Goal**: The portal has monitoring, analytics, and performance needed for a production launch
@@ -176,5 +177,5 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 5. Additional Sources | 3/3 | Complete   | 2026-03-11 |
 | 6. Data Enrichment | 2/2 | Complete | 2026-03-11 |
 | 7. District Accounts | 2/3 | In Progress|  |
-| 8. UI Polish & Static Pages | 0/2 | Not started | - |
+| 8. UI Polish & Static Pages | 0/3 | Not started | - |
 | 9. Operations & Launch | 0/2 | Not started | - |
