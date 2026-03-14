@@ -57,8 +57,8 @@
 ### Infrastructure & Operations
 
 - [x] **INFRA-01**: Portal is deployed and publicly accessible on a custom domain
-- [ ] **INFRA-02**: Scraping pipeline runs reliably on a schedule without manual intervention
-- [ ] **INFRA-03**: Scrape monitoring tracks success/failure counts per source
+- [x] **INFRA-02**: Scraping pipeline runs reliably on a schedule without manual intervention
+- [x] **INFRA-03**: Scrape monitoring tracks success/failure counts per source
 - [ ] **INFRA-04**: Portal has basic analytics to track usage (page views, search queries)
 
 ## v2 Requirements
@@ -138,8 +138,8 @@
 | UI-05 | Phase 8: UI Polish & Static Pages | Complete |
 | UI-06 | Phase 8: UI Polish & Static Pages | Complete |
 | INFRA-01 | Phase 1: Foundation | Complete |
-| INFRA-02 | Phase 9: Operations & Launch | Pending |
-| INFRA-03 | Phase 9: Operations & Launch | Pending |
+| INFRA-02 | Phase 9: Operations & Launch | Complete |
+| INFRA-03 | Phase 9: Operations & Launch | Complete |
 | INFRA-04 | Phase 9: Operations & Launch | Pending |
 
 **Coverage:**

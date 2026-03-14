@@ -26,16 +26,16 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 ## Current Position
 
 Phase: 9 of 9 (Operations & Launch) -- IN PROGRESS
-Plan: 1 of 4 in current phase (09-00 complete)
+Plan: 2 of 4 in current phase (09-01 complete)
 Status: Executing Phase 9
-Last activity: 2026-03-14 -- Executed plan 09-00 (Wave 0 test stubs)
+Last activity: 2026-03-14 -- Executed plan 09-01 (Admin monitoring dashboard & scrape alerts)
 
-Progress: [████████░░] 86%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 20
+- Total plans completed: 21
 - Average duration: ~7 min
 - Total execution time: ~1.8 hours
 
@@ -122,6 +122,10 @@ Recent decisions affecting current work:
 - [08-03]: ThemeToggle added to header for explicit light/dark switching (sun/moon icon)
 - [08-03]: Stats bar made async server component with live counts from Supabase
 - [08-03]: Warm utility classes in globals.css for consistent warm accent reuse
+- [09-01]: Recharts for monitoring line charts (widely used, good Next.js SSR compat)
+- [09-01]: HTML details/summary for error log expand/collapse (zero JS overhead)
+- [09-01]: Admin gate via OPERATOR_EMAIL env var check (consistent with existing pattern)
+- [09-01]: Per-call Resend instantiation for alert function (matches coaching-action pattern)
 - [09-00]: Used test.fixme() for Playwright stubs (test.todo() not supported in Playwright API)
 
 ### Pending Todos
@@ -135,6 +139,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T22:02:30Z
-Stopped at: Completed 09-00-PLAN.md
-Resume file: .planning/phases/09-operations-launch/09-00-SUMMARY.md
+Last session: 2026-03-14T22:05:19Z
+Stopped at: Completed 09-01-PLAN.md
+Resume file: .planning/phases/09-operations-launch/09-01-SUMMARY.md
