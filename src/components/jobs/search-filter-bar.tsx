@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import { Search, X } from "lucide-react";
 import { useDebouncedCallback } from "use-debounce";
+// Custom events only record on Vercel Pro plan ($20/mo). They silently no-op on Hobby.
+import { track } from "@vercel/analytics";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -26,6 +28,9 @@ export function SearchFilterBar({ count = 0 }: { count?: number }) {
 
   const debouncedSetQ = useDebouncedCallback((value: string) => {
     setFilters({ q: value || null });
+    if (value) {
+      track("search", { query: value.slice(0, 255) });
+    }
   }, 300);
 
   const hasActiveFilters =

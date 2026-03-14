@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Connecting the right educators with the right jobs",
   description:
     "Find every relevant PA educator job opening in one place with filters that actually work.",
-  url: "https://paeducatorjobs.vercel.app",
+  url: "https://school-job-portal.vercel.app",
   nav: [
     { label: "Home", href: "/" },
     { label: "Jobs", href: "/jobs" },

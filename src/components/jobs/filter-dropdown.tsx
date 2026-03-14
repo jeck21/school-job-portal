@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+// Custom events only record on Vercel Pro plan ($20/mo). They silently no-op on Hobby.
+import { track } from "@vercel/analytics";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Popover,
@@ -39,6 +41,7 @@ export function FilterDropdown({
     } else {
       onChange([...selected, value]);
     }
+    track("filter_applied", { type: label });
   }
 
   const showSearch = options.length > 6;
