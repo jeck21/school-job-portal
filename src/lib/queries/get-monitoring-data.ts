@@ -106,7 +106,7 @@ export async function getJobCountTrends(
   const grouped = new Map<string, number>();
   for (const row of data ?? []) {
     const date = (row.started_at as string).slice(0, 10); // YYYY-MM-DD
-    const source = (row.sources as { name: string }).name;
+    const source = (row.sources as unknown as { name: string }).name;
     const key = `${date}|${source}`;
     grouped.set(key, (grouped.get(key) ?? 0) + (row.jobs_added ?? 0));
   }
