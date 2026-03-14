@@ -11,6 +11,7 @@ import { ingestPareap } from "./adapters/pareap/ingest";
 import { ingestPaeducator } from "./adapters/paeducator/ingest";
 import { ingestSchoolSpring } from "./adapters/schoolspring/ingest";
 import { ingestTeachingJobsInPA } from "./adapters/teachingjobsinpa/ingest";
+import { sendScrapeAlert } from "./lib/alert";
 
 const ADAPTERS: Record<string, () => Promise<unknown>> = {
   pareap: ingestPareap,
@@ -44,18 +45,37 @@ async function runAll(): Promise<void> {
       const result = await ADAPTERS[name]();
 
       if (result && typeof result === "object" && "stats" in result) {
-        const { stats } = result as {
+        const { stats, errors: adapterErrors } = result as {
           stats: { added: number; updated: number; skipped: number; failed: number };
+          errors: Array<{ message: string }>;
         };
         console.log(
           `  ${name}: ${stats.added} added, ${stats.updated} updated, ${stats.skipped} skipped, ${stats.failed} failed`
         );
+
+        // Send alert if there were failures
+        const status =
+          stats.added + stats.updated === 0 && (adapterErrors?.length ?? 0) > 0
+            ? "failure"
+            : (adapterErrors?.length ?? 0) > 0
+              ? "partial_failure"
+              : "success";
+        try {
+          await sendScrapeAlert(name, status, adapterErrors ?? []);
+        } catch {
+          // Alert failure must not crash scraper
+        }
       }
 
       results.push({ adapter: name, success: true });
     } catch (error) {
       const msg = (error as Error).message || String(error);
       console.error(`\n[ERROR] ${name} failed: ${msg}`);
+      try {
+        await sendScrapeAlert(name, "failure", [{ message: msg }]);
+      } catch {
+        // Alert failure must not crash scraper
+      }
       results.push({ adapter: name, success: false, error: msg });
     }
   }
@@ -123,6 +143,19 @@ async function main() {
     }
 
     console.log("\n--- Done ---\n");
+
+    // Send alert if needed
+    const status =
+      stats.added + stats.updated === 0 && errors.length > 0
+        ? "failure"
+        : errors.length > 0
+          ? "partial_failure"
+          : "success";
+    try {
+      await sendScrapeAlert(adapterName, status, errors);
+    } catch {
+      // Alert failure must not crash scraper
+    }
 
     // Exit with error code if total failure (0 jobs and errors exist)
     if (stats.added + stats.updated === 0 && errors.length > 0) {
