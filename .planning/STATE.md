@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Completed 09-00-PLAN.md
-last_updated: "2026-03-14T22:02:30Z"
-last_activity: 2026-03-14 -- Executed plan 09-00 (Wave 0 test stubs)
+stopped_at: Completed 09-02-PLAN.md
+last_updated: "2026-03-14T22:06:28Z"
+last_activity: 2026-03-14 -- Executed plan 09-02 (Analytics, SEO & Performance)
 progress:
   total_phases: 9
   completed_phases: 7
   total_plans: 22
-  completed_plans: 19
-  percent: 86
+  completed_plans: 21
+  percent: 95
 ---
 
 # Project State
@@ -26,16 +26,16 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 ## Current Position
 
 Phase: 9 of 9 (Operations & Launch) -- IN PROGRESS
-Plan: 2 of 4 in current phase (09-01 complete)
+Plan: 3 of 4 in current phase (09-02 complete)
 Status: Executing Phase 9
-Last activity: 2026-03-14 -- Executed plan 09-01 (Admin monitoring dashboard & scrape alerts)
+Last activity: 2026-03-14 -- Executed plan 09-02 (Analytics, SEO & Performance)
 
-Progress: [█████████░] 90%
+Progress: [█████████░] 95%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
+- Total plans completed: 22
 - Average duration: ~7 min
 - Total execution time: ~1.8 hours
 
@@ -53,7 +53,7 @@ Progress: [█████████░] 90%
 | 8-UI Polish | 3/3 | ~12 min | ~4 min |
 
 **Recent Trend:**
-- Last 5 plans: 07-02 (5 min), 08-01 (4 min), 08-02 (4 min), 08-03 (4 min), 09-00 (1 min)
+- Last 5 plans: 08-01 (4 min), 08-02 (4 min), 08-03 (4 min), 09-00 (1 min), 09-02 (5 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -127,6 +127,10 @@ Recent decisions affecting current work:
 - [09-01]: Admin gate via OPERATOR_EMAIL env var check (consistent with existing pattern)
 - [09-01]: Per-call Resend instantiation for alert function (matches coaching-action pattern)
 - [09-00]: Used test.fixme() for Playwright stubs (test.todo() not supported in Playwright API)
+- [09-02]: Custom analytics events silently no-op on Hobby plan, activate on Vercel Pro
+- [09-02]: JSON-LD XSS protection via .replace(/</g, '\\u003c') in dangerouslySetInnerHTML
+- [09-02]: ISR revalidation: 1hr landing (live stats), 24hr about/coaching (static content)
+- [09-02]: Used job.city for JSON-LD addressLocality (schools join lacks city field)
 
 ### Pending Todos
 
@@ -139,6 +143,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T22:05:19Z
-Stopped at: Completed 09-01-PLAN.md
-Resume file: .planning/phases/09-operations-launch/09-01-SUMMARY.md
+Last session: 2026-03-14T22:06:28Z
+Stopped at: Completed 09-02-PLAN.md
+Resume file: .planning/phases/09-operations-launch/09-02-SUMMARY.md
