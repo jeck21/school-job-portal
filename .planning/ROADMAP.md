@@ -159,8 +159,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 09-01: TBD
-- [ ] 09-02: TBD
+- [ ] 09-01-PLAN.md — Admin monitoring dashboard with scrape timeline, job trends, error log, and failure email alerts
+- [ ] 09-02-PLAN.md — Vercel Analytics, sitemap, JSON-LD structured data, OG metadata, and static generation
+- [ ] 09-03-PLAN.md — Launch polish: custom error pages, favicons, PWA manifest, and security headers
 
 ## Progress
 
@@ -178,4 +179,4 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 6. Data Enrichment | 2/2 | Complete | 2026-03-11 |
 | 7. District Accounts | 2/3 | In Progress|  |
 | 8. UI Polish & Static Pages | 3/3 | Complete   | 2026-03-14 |
-| 9. Operations & Launch | 0/2 | Not started | - |
+| 9. Operations & Launch | 0/3 | Not started | - |
