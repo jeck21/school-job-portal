@@ -11,10 +11,19 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+export const revalidate = 86400; // 24 hours -- content rarely changes
+
 export const metadata: Metadata = {
   title: "About | PA Educator Jobs",
   description:
     "Built by a Pennsylvania educator who saw the problem firsthand. Learn how PA Educator Jobs brings every relevant job opening into one place.",
+  openGraph: {
+    title: "About | PA Educator Jobs",
+    description:
+      "Built by a Pennsylvania educator who saw the problem firsthand.",
+    url: "https://school-job-portal.vercel.app/about",
+    type: "website",
+  },
 };
 
 export default function AboutPage() {

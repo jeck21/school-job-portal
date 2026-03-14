@@ -2,10 +2,19 @@ import type { Metadata } from "next";
 import { CoachingForm } from "./coaching-form";
 import { Compass } from "lucide-react";
 
+export const revalidate = 86400; // 24 hours -- content rarely changes
+
 export const metadata: Metadata = {
   title: "Career Coaching | PA Educator Jobs",
   description:
     "Get personalized career guidance for your next role in Pennsylvania education. Whether you're starting out or making a change, we can help.",
+  openGraph: {
+    title: "Career Coaching | PA Educator Jobs",
+    description:
+      "Get personalized career guidance for your next role in Pennsylvania education.",
+    url: "https://school-job-portal.vercel.app/coaching",
+    type: "website",
+  },
 };
 
 export default function CoachingPage() {
