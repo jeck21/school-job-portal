@@ -68,7 +68,8 @@ export function JobList({
     filters.cert.length > 0 ||
     filters.salary !== false ||
     (filters.zip !== "" && filters.zip.length === 5) ||
-    filters.unspecified !== true;
+    filters.unspecified !== true ||
+    filters.verified !== false;
 
   // Build JobFilters object from nuqs state
   function buildFilters(): JobFilters {
@@ -82,6 +83,7 @@ export function JobList({
       zip: filters.zip && filters.zip.length === 5 ? filters.zip : undefined,
       radius: filters.radius,
       unspecified: filters.unspecified,
+      verified: filters.verified || undefined,
     };
   }
 
@@ -120,6 +122,7 @@ export function JobList({
     filters.zip,
     filters.radius,
     filters.unspecified,
+    filters.verified,
   ]);
 
   function loadMore() {

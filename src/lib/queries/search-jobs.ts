@@ -53,6 +53,7 @@ export async function searchJobs(
     subject_areas: filters.subject?.length ? filters.subject : null,
     cert_types: filters.cert?.length ? filters.cert : null,
     salary_only: filters.salary ?? false,
+    verified_only: filters.verified ?? false,
     zip_lat: zipLat,
     zip_lng: zipLng,
     radius_miles: filters.zip ? (filters.radius ?? 25) : null,
@@ -64,21 +65,10 @@ export async function searchJobs(
 
   if (error) throw error;
 
-  let results = data ?? [];
-
-  // Client-side verified filter
-  if (filters.verified) {
-    results = results.filter(
-      (row: Record<string, unknown>) => row.claimed_by_district_id != null
-    );
-  }
-
-  const totalCount = filters.verified
-    ? results.length
-    : (data?.[0]?.total_count ?? 0);
+  const results = data ?? [];
 
   return {
     jobs: results,
-    count: Number(totalCount),
+    count: Number(data?.[0]?.total_count ?? 0),
   };
 }
