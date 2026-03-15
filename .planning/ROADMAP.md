@@ -21,6 +21,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 7: District Accounts** - District auth, listing claims, verified badges, updates, and profile pages
 - [x] **Phase 8: UI Polish & Static Pages** - Responsive mobile experience, about page, career coaching form, and visual polish (completed 2026-03-14)
 - [x] **Phase 9: Operations & Launch** - Scrape monitoring, analytics, performance optimization, and production readiness (completed 2026-03-14)
+- [ ] **Phase 10: Verified Filter Count Fix** - Fix post-RPC count bug for verified-only filter (gap closure)
+- [ ] **Phase 11: Phase 7 Completion & Tech Debt Cleanup** - Verify DIST-06, remove dead code, complete Phase 7 docs (gap closure)
 
 ## Phase Details
 
@@ -164,6 +166,35 @@ Plans:
 - [ ] 09-02-PLAN.md — Vercel Analytics, sitemap, JSON-LD structured data, OG metadata, and static generation
 - [ ] 09-03-PLAN.md — Launch polish: custom error pages, favicons, PWA manifest, and security headers
 
+### Phase 10: Verified Filter Count Fix
+**Goal**: The verified-only filter returns accurate total counts and load-more works correctly when >25 verified jobs exist
+**Depends on**: Phase 4, Phase 7
+**Requirements**: SRCH-12, DIST-03
+**Gap Closure**: Closes integration gap (verified filter count) and flow gap (verified-district filter → correct count display) from v1.0 audit
+**Success Criteria** (what must be TRUE):
+  1. When the verified-only filter is active, the count header shows the true total of verified jobs, not the page slice length
+  2. Load-more pagination works correctly when more than 25 verified jobs exist
+**Plans**: 1 plan
+
+Plans:
+- [ ] 10-01-PLAN.md — Fix searchJobs verified filter count to use server-side filtering or correct post-RPC count
+
+### Phase 11: Phase 7 Completion & Tech Debt Cleanup
+**Goal**: Phase 7 is formally verified, DIST-06 is satisfied, and accumulated tech debt from the audit is resolved
+**Depends on**: Phase 7, Phase 3, Phase 9
+**Requirements**: DIST-06
+**Gap Closure**: Closes DIST-06 requirement gap, Phase 7 verification gap, and tech debt items from v1.0 audit
+**Success Criteria** (what must be TRUE):
+  1. DIST-06 (district profile page) is verified as working and marked complete
+  2. Phase 7 has a VERIFICATION.md and 07-03-SUMMARY.md
+  3. Dead code (getJobs export, unused districtName variable) is removed
+  4. Wave 0 test stubs are resolved (removed or implemented)
+  5. ROADMAP.md shows Phase 7 as Complete
+**Plans**: 1 plan
+
+Plans:
+- [ ] 11-01-PLAN.md — Verify DIST-06, create Phase 7 VERIFICATION.md and SUMMARY, remove dead code, fix test stubs
+
 ## Progress
 
 **Execution Order:**
@@ -181,3 +212,5 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 7. District Accounts | 2/3 | In Progress|  |
 | 8. UI Polish & Static Pages | 3/3 | Complete   | 2026-03-14 |
 | 9. Operations & Launch | 4/4 | Complete   | 2026-03-14 |
+| 10. Verified Filter Count Fix | 0/1 | Pending | |
+| 11. Phase 7 Completion & Tech Debt | 0/1 | Pending | |
