@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: Search & Filters** - Keyword search, radius, school type, grade band, subject, salary, cert, and combined filters (completed 2026-03-11)
 - [x] **Phase 5: Additional Sources** - PAeducator.net, PDE/Teach in PA, and 2+ more adapters with deduplication (completed 2026-03-11)
 - [x] **Phase 6: Data Enrichment** - Salary extraction, certification parsing, freshness validation, and auto-removal (completed 2026-03-11)
-- [ ] **Phase 7: District Accounts** - District auth, listing claims, verified badges, updates, and profile pages
+- [x] **Phase 7: District Accounts** - District auth, listing claims, verified badges, updates, and profile pages (completed 2026-03-12)
 - [x] **Phase 8: UI Polish & Static Pages** - Responsive mobile experience, about page, career coaching form, and visual polish (completed 2026-03-14)
 - [x] **Phase 9: Operations & Launch** - Scrape monitoring, analytics, performance optimization, and production readiness (completed 2026-03-14)
 - [x] **Phase 10: Verified Filter Count Fix** - Fix post-RPC count bug for verified-only filter (gap closure) (completed 2026-03-15)
@@ -129,9 +129,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 07-01-PLAN.md — Database migration, auth middleware, signup/login/logout, email confirmation, domain validation
-- [ ] 07-02-PLAN.md — Dashboard with claim review, listing management (delist/relist/create/edit), verified badge, scraper suppression
-- [ ] 07-03-PLAN.md — Public district profiles, district directory, verified badge integration in job list/detail
+- [x] 07-01-PLAN.md — Database migration, auth middleware, signup/login/logout, email confirmation, domain validation
+- [x] 07-02-PLAN.md — Dashboard with claim review, listing management (delist/relist/create/edit), verified badge, scraper suppression
+- [x] 07-03-PLAN.md — Public district profiles, district directory, verified badge integration in job list/detail
 
 ### Phase 8: UI Polish & Static Pages
 **Goal**: The portal looks and works great on all devices and has all supporting pages
@@ -209,8 +209,8 @@ Note: Phases 5 and 7 can begin after Phase 2 and 3 respectively (parallel tracks
 | 4. Search & Filters | 2/2 | Complete   | 2026-03-11 |
 | 5. Additional Sources | 3/3 | Complete   | 2026-03-11 |
 | 6. Data Enrichment | 2/2 | Complete | 2026-03-11 |
-| 7. District Accounts | 2/3 | In Progress|  |
+| 7. District Accounts | 3/3 | Complete | 2026-03-12 |
 | 8. UI Polish & Static Pages | 3/3 | Complete   | 2026-03-14 |
 | 9. Operations & Launch | 4/4 | Complete   | 2026-03-14 |
-| 10. Verified Filter Count Fix | 1/1 | Complete   | 2026-03-15 |
+| 10. Verified Filter Count Fix | 1/1 | Complete    | 2026-03-15 |
 | 11. Phase 7 Completion & Tech Debt | 0/1 | Pending | |

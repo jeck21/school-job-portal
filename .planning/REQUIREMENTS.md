@@ -43,7 +43,7 @@
 - [x] **DIST-03**: Claimed listings display a "Verified" badge on the portal
 - [x] **DIST-04**: District can update details on their claimed listings
 - [x] **DIST-05**: District can mark listings as filled/closed
-- [ ] **DIST-06**: District has a profile page showing all their open positions
+- [x] **DIST-06**: District has a profile page showing all their open positions
 
 ### User Interface & Experience
 
@@ -130,7 +130,7 @@
 | DIST-03 | Phase 7: District Accounts | Complete |
 | DIST-04 | Phase 7: District Accounts | Complete |
 | DIST-05 | Phase 7: District Accounts | Complete |
-| DIST-06 | Phase 11: Phase 7 Completion & Tech Debt Cleanup | Pending |
+| DIST-06 | Phase 11: Phase 7 Completion & Tech Debt Cleanup | Complete |
 | UI-01 | Phase 1: Foundation | Complete |
 | UI-02 | Phase 8: UI Polish & Static Pages | Complete |
 | UI-03 | Phase 9: Operations & Launch | Complete |
