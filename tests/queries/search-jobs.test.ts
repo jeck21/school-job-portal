@@ -33,11 +33,11 @@ const mockRpcData = [
   },
 ];
 
-vi.mock("@/lib/supabase/server", () => ({
-  createClient: vi.fn().mockResolvedValue({
+vi.mock("@/lib/supabase/admin", () => ({
+  createAdminClient: vi.fn(() => ({
     rpc: (...args: unknown[]) => mockRpc(...args),
     from: (...args: unknown[]) => mockFrom(...args),
-  }),
+  })),
 }));
 
 import { searchJobs } from "@/lib/queries/search-jobs";
@@ -175,6 +175,42 @@ describe("searchJobs", () => {
     });
   });
 
+  describe("verified", () => {
+    it("passes verified_only=true to RPC when verified filter active", async () => {
+      await searchJobs({ verified: true });
+      expect(rpcCalledWith?.params.verified_only).toBe(true);
+    });
+
+    it("passes verified_only=false when verified filter inactive", async () => {
+      await searchJobs({ verified: false });
+      expect(rpcCalledWith?.params.verified_only).toBe(false);
+    });
+
+    it("defaults verified_only to false when not specified", async () => {
+      await searchJobs({});
+      expect(rpcCalledWith?.params.verified_only).toBe(false);
+    });
+
+    it("does not do client-side filtering (count comes from RPC total_count)", async () => {
+      // Mock RPC returning 3 rows -- mix of claimed and unclaimed
+      const mixedRows = [
+        { ...mockRpcData[0], id: "a", claimed_by_district_id: "dist-1", total_count: 50 },
+        { ...mockRpcData[0], id: "b", claimed_by_district_id: null, total_count: 50 },
+        { ...mockRpcData[0], id: "c", claimed_by_district_id: "dist-2", total_count: 50 },
+      ];
+      mockRpc.mockImplementation((fn: string, params: Record<string, unknown>) => {
+        rpcCalledWith = { fn, params };
+        return Promise.resolve({ data: mixedRows, error: null });
+      });
+
+      const result = await searchJobs({ verified: true });
+      // All 3 rows returned (server-side filtering, not client-side)
+      expect(result.jobs).toHaveLength(3);
+      // Count comes from RPC total_count, not results.length
+      expect(result.count).toBe(50);
+    });
+  });
+
   describe("combined", () => {
     it("passes all filter params together to RPC", async () => {
       await searchJobs({
@@ -184,6 +220,7 @@ describe("searchJobs", () => {
         subject: ["math"],
         cert: ["instructional"],
         salary: true,
+        verified: true,
         zip: "19101",
         radius: 30,
         unspecified: false,
@@ -196,6 +233,7 @@ describe("searchJobs", () => {
       expect(rpcCalledWith?.params.subject_areas).toEqual(["math"]);
       expect(rpcCalledWith?.params.cert_types).toEqual(["instructional"]);
       expect(rpcCalledWith?.params.salary_only).toBe(true);
+      expect(rpcCalledWith?.params.verified_only).toBe(true);
       expect(rpcCalledWith?.params.zip_lat).toBe(39.9526);
       expect(rpcCalledWith?.params.zip_lng).toBe(-75.1652);
       expect(rpcCalledWith?.params.radius_miles).toBe(30);
