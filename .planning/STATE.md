@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 09-03-PLAN.md
-last_updated: "2026-03-14T22:16:21.568Z"
-last_activity: 2026-03-14 -- Executed plan 09-03 (Launch Polish)
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-03-15T02:42:30Z"
+last_activity: 2026-03-14 -- Executed plan 10-01 (Verified Filter Count Fix)
 progress:
-  total_phases: 9
-  completed_phases: 8
-  total_plans: 23
-  completed_plans: 22
-  percent: 96
+  total_phases: 11
+  completed_phases: 10
+  total_plans: 24
+  completed_plans: 23
+  percent: 97
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** Educators can find every relevant PA job opening in one place with filters that actually work -- without stale postings or clunky interfaces.
-**Current focus:** Phase 9 - Operations & Launch
+**Current focus:** Phase 10 - Verified Filter Count Fix (gap closure)
 
 ## Current Position
 
-Phase: 9 of 9 (Operations & Launch) -- IN PROGRESS
-Plan: 4 of 4 in current phase (09-03 complete)
-Status: Executing Phase 9
-Last activity: 2026-03-14 -- Executed plan 09-03 (Launch Polish)
+Phase: 10 of 11 (Verified Filter Count Fix) -- COMPLETE
+Plan: 1 of 1 in current phase (10-01 complete)
+Status: Phase 10 complete
+Last activity: 2026-03-14 -- Executed plan 10-01 (Verified Filter Count Fix)
 
-Progress: [██████████] 96%
+Progress: [██████████] 97%
 
 ## Performance Metrics
 
@@ -53,7 +53,7 @@ Progress: [██████████] 96%
 | 8-UI Polish | 3/3 | ~12 min | ~4 min |
 
 **Recent Trend:**
-- Last 5 plans: 08-01 (4 min), 08-02 (4 min), 08-03 (4 min), 09-00 (1 min), 09-02 (5 min)
+- Last 5 plans: 08-02 (4 min), 08-03 (4 min), 09-00 (1 min), 09-02 (5 min), 10-01 (3 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -134,6 +134,8 @@ Recent decisions affecting current work:
 - [Phase 09-03]: Link + buttonVariants for button-styled links (Base UI Button lacks asChild)
 - [Phase 09-03]: CSP unsafe-inline for scripts required by Next.js hydration
 - [Phase 09-03]: Geolocation=(self) in Permissions-Policy for radius filter feature
+- [10-01]: verified_only param positioned after salary_only in RPC signature (matching boolean filter pattern)
+- [10-01]: WHERE clause uses NOT verified_only OR claimed_by_district_id IS NOT NULL (same pattern as salary_only)
 
 ### Pending Todos
 
@@ -146,6 +148,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T22:13:30Z
-Stopped at: Completed 09-03-PLAN.md
-Resume file: .planning/phases/09-operations-launch/09-03-SUMMARY.md
+Last session: 2026-03-15T02:42:30Z
+Stopped at: Completed 10-01-PLAN.md
+Resume file: .planning/phases/10-verified-filter-count-fix/10-01-SUMMARY.md
