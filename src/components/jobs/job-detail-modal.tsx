@@ -1,11 +1,14 @@
 "use client";
 
+import { useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { JobDetail } from "@/components/jobs/job-detail";
 
 type JobDetailData = {
@@ -29,16 +32,24 @@ type JobDetailData = {
 export function JobDetailModal({ job }: { job: JobDetailData }) {
   const router = useRouter();
 
+  const closeModal = useCallback(() => {
+    router.push("/jobs");
+  }, [router]);
+
   return (
-    <Dialog
-      open={true}
-      onOpenChange={(open) => {
-        if (!open) {
-          router.push("/jobs");
-        }
-      }}
-    >
-      <DialogContent className="sm:max-w-2xl max-h-[85vh] overflow-y-auto">
+    <Dialog open={true} onOpenChange={(open) => { if (!open) closeModal(); }}>
+      <DialogContent
+        className="sm:max-w-2xl max-h-[85vh] overflow-y-auto"
+        showCloseButton={false}
+      >
+        <button
+          type="button"
+          onClick={closeModal}
+          className="absolute top-2 right-2 z-10 rounded-sm p-1.5 text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+          aria-label="Close"
+        >
+          <X className="size-4" />
+        </button>
         <DialogHeader>
           <JobDetail job={job} asModal={true} />
         </DialogHeader>
