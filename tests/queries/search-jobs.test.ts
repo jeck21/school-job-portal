@@ -166,12 +166,26 @@ describe("searchJobs", () => {
   });
 
   describe("cert", () => {
-    it("passes cert_types array to RPC", async () => {
-      await searchJobs({ cert: ["instructional", "emergency-permit"] });
+    it("expands cert type categories to canonical PDE names", async () => {
+      await searchJobs({ cert: ["administrative"] });
       expect(rpcCalledWith?.params.cert_types).toEqual([
-        "instructional",
-        "emergency-permit",
+        "Principal", "Superintendent",
       ]);
+    });
+
+    it("passes null when cert types have no canonical names", async () => {
+      await searchJobs({ cert: ["emergency-permit"] });
+      expect(rpcCalledWith?.params.cert_types).toBeNull();
+    });
+
+    it("combines names from multiple cert type categories", async () => {
+      await searchJobs({ cert: ["administrative", "supervisory"] });
+      const certTypes = rpcCalledWith?.params.cert_types as string[];
+      expect(certTypes).toContain("Principal");
+      expect(certTypes).toContain("Superintendent");
+      expect(certTypes).toContain("Supervisor");
+      expect(certTypes).toContain("Special Education Supervisor");
+      expect(certTypes).toContain("Instructional Coach");
     });
   });
 
@@ -231,7 +245,8 @@ describe("searchJobs", () => {
       expect(rpcCalledWith?.params.school_types).toEqual(["public"]);
       expect(rpcCalledWith?.params.grade_bands).toEqual(["high"]);
       expect(rpcCalledWith?.params.subject_areas).toEqual(["math"]);
-      expect(rpcCalledWith?.params.cert_types).toEqual(["instructional"]);
+      expect(rpcCalledWith?.params.cert_types).toBeTruthy();
+      expect((rpcCalledWith?.params.cert_types as string[])).toContain("Mathematics");
       expect(rpcCalledWith?.params.salary_only).toBe(true);
       expect(rpcCalledWith?.params.verified_only).toBe(true);
       expect(rpcCalledWith?.params.zip_lat).toBe(39.9526);
