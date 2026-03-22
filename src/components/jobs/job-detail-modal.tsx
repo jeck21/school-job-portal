@@ -34,7 +34,7 @@ export function JobDetailModal({ job }: { job: JobDetailData }) {
       open={true}
       onOpenChange={(open) => {
         if (!open) {
-          router.back();
+          router.push("/jobs");
         }
       }}
     >
