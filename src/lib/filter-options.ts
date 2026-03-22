@@ -59,6 +59,41 @@ export const CERTIFICATION_TYPES = [
   { value: "not-required", label: "No Certification Required" },
 ] as const;
 
+// Mapping from certification type filter values to canonical PDE cert names
+// stored in the database. Used to expand filter selections before querying.
+// Types with empty arrays (emergency-permit, intern, not-required) have no
+// canonical cert names -- they rely on the "include unspecified" toggle.
+export const CERT_TYPE_TO_NAMES: Record<string, string[]> = {
+  "instructional": [
+    "Mathematics", "English", "Biology", "Chemistry", "Physics",
+    "General Science", "Earth and Space Science", "Social Studies",
+    "Spanish", "French", "German", "Chinese", "Latin", "American Sign Language",
+    "Elementary Education K-6", "Early Childhood Education PK-4",
+    "Middle Level Education 4-8", "Art Education", "Music Education",
+    "Theatre", "Dance", "Technology Education",
+    "Health and Physical Education", "Health Education",
+    "Environmental Education", "Citizenship Education",
+    "Agriculture", "Family and Consumer Science",
+  ],
+  "educational-specialist": [
+    "School Counselor", "School Nurse", "School Psychologist",
+    "School Social Worker", "Speech-Language Pathologist",
+    "Reading Specialist", "Library Science",
+  ],
+  "administrative": [
+    "Principal", "Superintendent",
+  ],
+  "supervisory": [
+    "Supervisor", "Special Education Supervisor", "Instructional Coach",
+  ],
+  "career-technical": [
+    "Career and Technical Education", "Business, Computer, Information Technology",
+  ],
+  "emergency-permit": [],
+  "intern": [],
+  "not-required": [],
+};
+
 export const RADIUS_OPTIONS = {
   min: 5,
   max: 150,

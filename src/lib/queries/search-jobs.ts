@@ -1,6 +1,7 @@
 "use server";
 
 import { createAdminClient } from "@/lib/supabase/admin";
+import { CERT_TYPE_TO_NAMES } from "@/lib/filter-options";
 
 export type JobFilters = {
   q?: string;
@@ -46,12 +47,25 @@ export async function searchJobs(
     zipLng !== null &&
     (filters.type?.includes("cyber") ?? false);
 
+  // Expand cert type filter values to canonical PDE cert names
+  let expandedCerts: string[] | null = null;
+  if (filters.cert?.length) {
+    const names = new Set<string>();
+    for (const certType of filters.cert) {
+      const mapped = CERT_TYPE_TO_NAMES[certType];
+      if (mapped) {
+        for (const name of mapped) names.add(name);
+      }
+    }
+    expandedCerts = names.size > 0 ? Array.from(names) : null;
+  }
+
   const { data, error } = await supabase.rpc("search_jobs", {
     search_term: filters.q || null,
     school_types: filters.type?.length ? filters.type : null,
     grade_bands: filters.grade?.length ? filters.grade : null,
     subject_areas: filters.subject?.length ? filters.subject : null,
-    cert_types: filters.cert?.length ? filters.cert : null,
+    cert_types: expandedCerts,
     salary_only: filters.salary ?? false,
     verified_only: filters.verified ?? false,
     zip_lat: zipLat,
