@@ -1,14 +1,13 @@
 "use client";
 
-import { useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { JobDetail } from "@/components/jobs/job-detail";
 
 type JobDetailData = {
@@ -31,9 +30,23 @@ type JobDetailData = {
 
 export function JobDetailModal({ job }: { job: JobDetailData }) {
   const router = useRouter();
+  const pathname = usePathname();
+  const closingRef = useRef(false);
+
+  // If pathname is /jobs (not /jobs/[id]), the modal is stale — force close
+  useEffect(() => {
+    if (pathname === "/jobs" && !closingRef.current) {
+      closingRef.current = true;
+      window.location.href = "/jobs";
+    }
+  }, [pathname]);
 
   const closeModal = useCallback(() => {
-    router.push("/jobs");
+    closingRef.current = true;
+    // router.back() properly clears the intercepting route parallel slot.
+    // If history is unreliable (tab switching), the useEffect above catches
+    // the stale state and forces a hard navigation.
+    router.back();
   }, [router]);
 
   return (
